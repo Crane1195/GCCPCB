@@ -30,7 +30,7 @@ After installing the Arduino IDE, open GCCPCB-XX.ino, and add the libraries usin
 
 ![image](https://i.imgur.com/S65sGQo.png)
 
-Navigate to where you have the GCCPCB-XX folder, and double click one, then repeat the process for the other.
+Navigate to where you have the GCCPCB-XX folder, and double click one, then repeat the process for the other. I will be adding a library for the Nunchuk port soon, which you will install in the same way as the other two. You will only need to install these libraries and the Arduino IDE once. For future updates, you will just have to download the new code, and upload it using the method below.
 
 ![image](https://i.imgur.com/Bc7xqCz.png)
 
@@ -43,5 +43,26 @@ Before plugging in the GCCPCB, look and see what Ports are there. On this machin
 ![image](https://i.imgur.com/GjqfGvJ.png)
 
 Plug in the board via USB, and check this menu again, you should see another COM port show up. For both of my computers, it will also say "Arduino/Genuino Micro", but it is possible it will not. What should always happen though, is a port should show up when you plug in the board, and should disappear when you unplug the board (make sure you close the menu and reopen it to refresh the list). This port is the port for the GCCPCB. Select it.
+
+![image](https://i.imgur.com/u16W9HK.png)
+
+If you are not using a Brook Board, you are ready to upload to the board. Click this button to do so.
+
+![image](https://i.imgur.com/CY3OeIv.png)
+
+This section of the IDE will say Compiling Sketch, then Uploading, then Done Uploading. When it says Done Uploading, the board is ready to use, and can be unplugged.
+
+![image](https://i.imgur.com/8f7lK0G.png)
+
+If you are using a Brook Board, and are not using the default layout shown here (Brook A corresponds to the B screw terminal on my board, etc), you will have to edit the pinout in the code.
+
+![image](https://i.imgur.com/2Sreh0V.png)
+
+This chart details which Arduino pin corresponds to which GCCPCB screw terminal which corresponds to what Brook Board input. Insert the button wires of the buttons you want to use for the Brook board into the terminal that matches the input. If any of the buttons do not align the GCCPCB functionality you want (Lets say you plug your Brook  
+
+![image](https://i.imgur.com/SL0nwQw.png)
+
+Look for these lines. Their line numbers may not be the same, but it is near the top of the file. These values are the Arduino pins that correspond to the screw terminals on the board. 
+
 
 Finishing this soon.
