@@ -58,7 +58,7 @@ If you are using a Brook Board, and are not using the default layout shown here 
 
 ![image](https://i.imgur.com/2Sreh0V.png)
 
-This chart details which Arduino pin corresponds to which GCCPCB screw terminal which corresponds to what Brook Board input. Insert the button wires of the buttons you want to use for the Brook board into the terminal that matches the input. If any of the buttons do not align the GCCPCB functionality you want (Lets say you plug your Brook  
+This chart details which Arduino pin corresponds to which GCCPCB screw terminal which corresponds to what Brook Board input. Insert the button wires of the buttons you want to use for the Brook board into the terminal that matches the input. If any of the buttons do not align the GCCPCB functionality you want (Lets say you want your Brook   
 
 ![image](https://i.imgur.com/SL0nwQw.png)
 
