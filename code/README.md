@@ -1,3 +1,78 @@
+# DISCLAIMER
+This is only guaranteed to work on my GCCPCB. It should be usable on any Arduino Leonardo, Micro, or Pro Micro, and probably on other 32u4 based boards as well, but do so at your own risk. I have similar code here: https://github.com/Crane1195/DIYB0XX/tree/master/code if you are making a DIY using any other Arduino.
+
+
+# Credits
+
+This code currently utilizes Nicohood's Nintendo library : https://github.com/NicoHood/Nintendo
+and MHeironimus' Arduino Joystick Library : https://github.com/MHeironimus/ArduinoJoystickLibrary
+
+This code started as DIY Smashbox code by simple, had all of its logic changed to fit the B0XX manifesto's two modifiers/situational modifiers by Snapple, had many positional values corrected by Danny, and Hexadecimal added 2ip with no reactivation as an SOCD method which is the method the B0XX uses. I fixed many other positional values, added Ultimate/PM modes, added 2ip as an SOCD option, fixed various issues, and have now added native USB PC control. 
+
+# Using my GCCPCB code
+
+The GCCPCB supports PC and Gamecube control.
+
+* To launch in Gamecube mode, just plug the controller in.
+* To launch in PC mode, hold C-Down while plugging in.
+
+If you would like to swap these:
+
+Change line 44 from `device currentDevice = GC;` to `device currentDevice = PC;`
+
+Change line 106 from `currentDevice = PC;` to `currentDevice = GC;`
+
+If you would like to change the button from C-Down to something else:
+
+Change line 104 from `if (digitalRead(CDOWN) == LOW` to `if (digitalRead(???) == LOW` where ??? is your choice. See the lines above 104 for the buttons names. 
+
+## Game profiles
+ 
+ The GCCPCB supports Melee, Smash4/Ultimate, and PM. In addition to holding C-Down (or not), two of these modes require a button input on plug in.
+ 
+ *  To launch in Melee mode, just plug in normally.
+ *  To launch in Smash4/Ultimate mode, hold B while plugging in.
+ *  To launch in Project M mode, hold X while plugging in.
+ 
+ For example, if you are playing PM on Dolphin with default settings, you would hold C-Down and X while plugging in. Melee on console, hold nothing. Ultimate on console, hold B. Melee on Dolphin, hold C-Down. Et cetera.
+ 
+ If you want to change the default mode, or the button inputs for the others, you can.
+ 
+ Line 43 determines the profile when nothing is held. `game currentGame = Melee;`
+ 
+ Line 111 determines the profile when B is held. `game currentGame = Ultimate;`
+ 
+ Line 116 determines the profile when X is held. `game currentGame = PM;`
+ 
+ Line 109 determines the button to hold for the second profile `if (digitalRead(B) == LOW)`
+ 
+ Line 114 determines the button to hold for the third profile `if (digitalRead(X) == LOW)`
+ 
+ Change these if you would prefer different settings.
+
+## SOCD (Simultaneous Opposite Cardinal Directions)
+
+You can choose your SOCD method for each game profile.
+
+To do so, change the value to the right of the equal sign on line 45 for Melee, 112 for Ultimate, and 117 for PM to Neutral, TwoIP, or TwoIPNoReactivate. I do not advise changing these though, as the default settings match the B0XX.
+
+Here is a rundown of what each SOCD method means:
+
+#### 2ip works like this:
+* Press left. Character moves left.
+* While still pressing left, press right. Character moves right.
+* While still pressing left, stop pressing right. Character moves left again.
+
+#### 2ip with no reactivation (The method the B0XX uses) works like this:
+* Press left. Character moves left.
+* While still pressing left, press right. Character moves right.
+* While still pressing left, stop pressing right. Character will not move.
+
+#### Neutral works like this:
+* Press left. Character moves left.
+* While still pressing left, press right. Character stops moving.
+* While still pressing left, stop pressing right. Character moves left again.
+
 # Installing My GCCPCB Code
 
 The code I run on my GCCPCB's currently utilizes Nicohood's Nintendo library found here :
