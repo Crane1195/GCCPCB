@@ -58,11 +58,20 @@ If you are using a Brook Board, and are not using the default layout shown here 
 
 ![image](https://i.imgur.com/2Sreh0V.png)
 
-This chart details which Arduino pin corresponds to which GCCPCB screw terminal which corresponds to what Brook Board input. Insert the button wires of the buttons you want to use for the Brook board into the terminal that matches the input. If any of the buttons do not align the GCCPCB functionality you want (Lets say you want your Brook   
+This chart details which Arduino pin corresponds to which GCCPCB screw terminal which corresponds to what Brook Board input. Insert the button wires of the buttons you want to use for the Brook board into the terminal that matches the input.
 
 ![image](https://i.imgur.com/SL0nwQw.png)
 
-Look for these lines. Their line numbers may not be the same, but it is near the top of the file. These values are the Arduino pins that correspond to the screw terminals on the board. 
+Look for these lines. Their line numbers may not be the same, but it is near the top of the file. These values are the Arduino pins that correspond to the screw terminals on the board.
+
+For an example: Lets say you want your Brook RB/LB to be in the traditional fighting game location, with an 8 button layout. What you would do, is plug your LB button into the screw terminal for A, and the RB button into the screw terminal for C-L. Then, you would plug your Gamecube controller A/C-L buttons into E1/E2 (Extra 1 and Extra 2). You would then change these numbers in the code.
+
+```
+const int A = XX      : XX would now be 11
+const int CLEFT = XX  : XX would now be 10
+const int EXTRA1 = XX : XX would now be 15
+const int EXTRA2 = XX : XX would now be 9 
+```
 
 
 Finishing this soon.
