@@ -72,6 +72,7 @@ const int CLEFT = XX  : XX would now be 10
 const int EXTRA1 = XX : XX would now be 15
 const int EXTRA2 = XX : XX would now be 9 
 ```
+If you have any problems with this, or need assistance setting up the button mapping, feel free to message me on Discord @Crane#1195 .
 
-
-Finishing this soon.
+## Contact
+If you have any questions or need any assistance in this process, feel free to message me on Discord @Crane#1195
