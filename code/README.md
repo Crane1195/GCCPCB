@@ -5,6 +5,7 @@ This is only guaranteed to work on my GCCPCB. It should be usable on any Arduino
 # Credits
 
 This code currently utilizes Nicohood's Nintendo library : https://github.com/NicoHood/Nintendo
+
 and MHeironimus' Arduino Joystick Library : https://github.com/MHeironimus/ArduinoJoystickLibrary
 
 This code started as DIY Smashbox code by simple, had all of its logic changed to fit the B0XX manifesto's two modifiers/situational modifiers by Snapple, had many positional values corrected by Danny, and Hexadecimal added 2ip with no reactivation as an SOCD method which is the method the B0XX uses. I fixed many other positional values, added Ultimate/PM modes, added 2ip as an SOCD option, fixed various issues, and have now added native USB PC control. 
