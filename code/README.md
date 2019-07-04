@@ -6,9 +6,15 @@ This is only guaranteed to work on my GCCPCB. It should be usable on any Arduino
 
 This code currently utilizes Nicohood's Nintendo library : https://github.com/NicoHood/Nintendo
 
-and MHeironimus' Arduino Joystick Library : https://github.com/MHeironimus/ArduinoJoystickLibrary
+MHeironimus' Arduino Joystick Library : https://github.com/MHeironimus/ArduinoJoystickLibrary
 
-This code started as DIY Smashbox code by simple, had all of its logic changed to fit the B0XX manifesto's two modifiers/situational modifiers by Snapple, had many positional values corrected by Danny, and Hexadecimal added 2ip with no reactivation as an SOCD method which is the method the B0XX uses. I fixed many other positional values, added Ultimate/PM modes, added 2ip as an SOCD option, fixed various issues, and have now added native USB PC control. 
+dmadison's Nintendo Extension Controller Library : https://github.com/dmadison/NintendoExtensionCtrl
+
+taker for suggestions regarding modifiers in the Smash Ultimate profile.
+
+As of July 4th 2019 : I rewrote the entire program to increase efficiency, increase readability, to make adding new profiles easier, to improve the Smash Ultimate mode, and to add Nunchuk functionality.
+
+I plan on implementing the Wii Classic Controller and NES/SNES mini controllers, and automatic mode switching depending on if you plug into a Gamecube/Wii, Gamecube to USB adapter, or PC.
 
 # Using my GCCPCB code
 
@@ -19,43 +25,43 @@ The GCCPCB supports PC and Gamecube control.
 
 If you would like to swap these:
 
-Change line 44 from `device currentDevice = GC;` to `device currentDevice = PC;`
+Change line 74 from `device currentDevice = GC;` to `device currentDevice = PC;`
 
-Change line 106 from `currentDevice = PC;` to `currentDevice = GC;`
+Change line 134 from `currentDevice = PC;` to `currentDevice = GC;`
 
 If you would like to change the button from C-Down to something else:
 
-Change line 104 from `if (digitalRead(CDOWN) == LOW` to `if (digitalRead(???) == LOW` where ??? is your choice. See the lines above 104 for the buttons names. 
+Change line 132 from `if (digitalRead(CDOWN) == LOW` to `if (digitalRead(???) == LOW` where ??? is your choice. See the lines above 101 for the buttons names.
 
 ## Game profiles
- 
- The GCCPCB supports Melee, Smash4/Ultimate, and PM. In addition to holding C-Down (or not), two of these modes require a button input on plug in.
- 
+
+ The GCCPCB supports Melee, Ultimate, and PM. In addition to holding C-Down (or not), two of these modes require a button input on plug in.
+
  *  To launch in Melee mode, just plug in normally.
  *  To launch in Smash4/Ultimate mode, hold B while plugging in.
  *  To launch in Project M mode, hold X while plugging in.
- 
+
  For example, if you are playing PM on Dolphin with default settings, you would hold C-Down and X while plugging in. Melee on console, hold nothing. Ultimate on console, hold B. Melee on Dolphin, hold C-Down. Et cetera.
- 
+
  If you want to change the default mode, or the button inputs for the others, you can.
- 
- Line 43 determines the profile when nothing is held. `game currentGame = Melee;`
- 
- Line 111 determines the profile when B is held. `game currentGame = Ultimate;`
- 
- Line 116 determines the profile when X is held. `game currentGame = PM;`
- 
- Line 109 determines the button to hold for the second profile `if (digitalRead(B) == LOW)`
- 
- Line 114 determines the button to hold for the third profile `if (digitalRead(X) == LOW)`
- 
+
+ Line 73 determines the profile when nothing is held. `game currentGame = Melee;`
+
+ Line 145 determines the profile when B is held. `game currentGame = Ultimate;`
+
+ Line 150 determines the profile when X is held. `game currentGame = PM;`
+
+ Line 143 determines the button to hold for the second profile `if (digitalRead(B) == LOW)`
+
+ Line 148 determines the button to hold for the third profile `if (digitalRead(X) == LOW)`
+
  Change these if you would prefer different settings.
 
 ## SOCD (Simultaneous Opposite Cardinal Directions)
 
 You can choose your SOCD method for each game profile.
 
-To do so, change the value to the right of the equal sign on line 45 for Melee, 112 for Ultimate, and 117 for PM to Neutral, TwoIP, or TwoIPNoReactivate. I do not advise changing these though, as the default settings match the B0XX.
+To do so, change the value to the right of the equal sign on line 73 for the mode that starts with no input, 146 for the mode that starts with B in my case, and 151 for the mode that starts with X in my case to Neutral, TwoIP, or TwoIPNoReactivate. I do not advise changing these though, as the default settings are the most fair.
 
 Here is a rundown of what each SOCD method means:
 
@@ -84,7 +90,11 @@ and MHeironimus' Arduino Joystick Library found here :
 
 https://github.com/MHeironimus/ArduinoJoystickLibrary
 
-Press Clone or download, and press Download ZIP on both of these repos. The Nintendo library is in the form it needs to be in, but the joystick library is not.
+and dmadison's Nintendo Extension Controller Library found here :
+
+https://github.com/dmadison/NintendoExtensionCtrl
+
+Press Clone or download, and press Download ZIP on both of these repos. The Nintendo library and the Extension controller library are in the form they need to be in, but the joystick library is not.
 
 ![image](https://i.imgur.com/qxkgcJC.png)
 
@@ -96,7 +106,7 @@ Download my repo as well, and extract the folder code/GCCPCB-XX (XX will depend 
 
 Your folder should look like this.
 
-Another thing you will need is the Arduino IDE, which is found here : 
+Another thing you will need is the Arduino IDE, which is found here :
 
 https://www.arduino.cc/en/Main/Software
 
@@ -106,7 +116,7 @@ After installing the Arduino IDE, open GCCPCB-XX.ino, and add the libraries usin
 
 ![image](https://i.imgur.com/S65sGQo.png)
 
-Navigate to where you have the GCCPCB-XX folder, and double click one, then repeat the process for the other. I will be adding a library for the Nunchuk port soon, which you will install in the same way as the other two. You will only need to install these libraries and the Arduino IDE once. For future updates, you will just have to download the new code, and upload it using the method below.
+Navigate to where you have the GCCPCB-XX folder, and double click one, then repeat the process for the others. You will only need to install these libraries and the Arduino IDE once. For future updates, you will just have to download the new code, and upload it using the method below.
 
 ![image](https://i.imgur.com/Bc7xqCz.png)
 
@@ -146,7 +156,7 @@ For an example: Lets say you want your Brook RB/LB to be in the traditional figh
 const int A = XX      : XX would now be 11
 const int CLEFT = XX  : XX would now be 10
 const int EXTRA1 = XX : XX would now be 15
-const int EXTRA2 = XX : XX would now be 9 
+const int EXTRA2 = XX : XX would now be 9
 ```
 If you have any problems with this, or need assistance setting up the button mapping, feel free to message me on Discord @Crane#1195 .
 
