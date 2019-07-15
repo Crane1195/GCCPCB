@@ -279,6 +279,7 @@ void loop()
         if (currentGame == Ultimate) {
           controlX = 128 + (positionX * 40);
           controlY = 128 + (positionY * 40);
+          if (isB) controlX = 128 + (positionX * 53);
         }
         if (currentGame == PM) {
           controlX = 128 + (positionX * 68);
@@ -556,7 +557,7 @@ void loop()
     bool isC = nchuk.buttonC();
 
     if (isC && isZ)
-      LLight = 49;
+      LLight = 80;
     if (!isC && isZ) {
       LLight = 140;
       isL = true;
@@ -583,7 +584,9 @@ void loop()
   }
 
 /********* DPAD *********/
+//Comment out line 588, and uncomment 589 if you want to use a dpad switch/button on the EXTRA2 terminal.
   if (isMOD1 && isMOD2) {
+  //if (isEXTRA2) {
     cstickX = 128;
     cstickY = 128;
     if (isCUP) isDPADUP = true;
