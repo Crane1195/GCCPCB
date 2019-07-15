@@ -33,6 +33,10 @@ If you would like to change the button from C-Down to something else:
 
 Change line 132 from `if (digitalRead(CDOWN) == LOW` to `if (digitalRead(???) == LOW` where ??? is your choice. See the lines above 101 for the buttons names.
 
+## Nunchuk
+
+Currently, the GCCPCB now supports the Nunchuk over the Nintendo extension controller port. To use a Nunchuk, plug it into the port before plugging in the controller. Currently I have confirmed it works in Melee on GC/Wii, Ultimate on Switch, and in PC mode. Some games will not work such as Mario Kart Double Dash on GC/Wii due to what I assume is a faster polling rate than the GCCPCB can support while using the Nunchuk library. I'll try and find a way to get that to work, sorry for the inconvenience.
+
 ## Game profiles
 
  The GCCPCB supports Melee, Ultimate, and PM. In addition to holding C-Down (or not), two of these modes require a button input on plug in.
