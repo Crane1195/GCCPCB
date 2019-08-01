@@ -84,6 +84,11 @@ Here is a rundown of what each SOCD method means:
 * While still pressing left, press right. Character stops moving.
 * While still pressing left, stop pressing right. Character moves left again.
 
+## DPAD toggle button/switch
+Normally the DPAD is enabled by holding Mod1 and Mod2 and pressing C-Up/down/left/right. If instead you would rather have a switch or a button do this, you can do so by attaching a button or switch to the EXTRA2 screw terminal and following these steps.
+* Comment out line 588
+* Uncomment line 589
+
 # Installing My GCCPCB Code
 
 The code I run on my GCCPCB's currently utilizes Nicohood's Nintendo library found here :
