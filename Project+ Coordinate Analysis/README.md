@@ -87,7 +87,7 @@ These coordinates are the same as in Melee.
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/11%20-%20Down%20Special%20and%20Drop%20Through%20Platform.png)
 
-This image shows the region in which down special will not drop you through a platform. It is 15 pixels (15% of the cardinal) as opposed to the 11 pixels (11% of the cardinal) in Melee. Whether or not one of these 15 coordinates is allowed is up for debate.
+This image shows the region in which down special will not drop you through a platform. It is 15/100 pixels (15%) as opposed to the 11/80 pixels (13.75%) in Melee. Whether or not one of these 15 coordinates is allowed is up for debate. The Melee mode's coordinate as of patch 2.0 is no longer within these 11 pixels, so perhaps the PM mode should match. 
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/12%20-%20Modifier%20X%20part%202.png)
 
