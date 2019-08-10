@@ -11,7 +11,7 @@ There are two reasons why I had to make these graphics and they are the differen
 
 Since the range is -100 to 100, the proportion that is commonly used in Melee to express analog values will now conveniently align with how many pixels away from neutral the coordinate is.
 
-### 3. The Coordinate Plain
+### 3. The Coordinate Plane
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/1%20-%20The%20Coordinate%20Plane.png)
 The dead zone for P+'s coordinate field is slightly larger than in Melee. Melee's dead zone is 44x44 pixels, where P+'s is 54x54.
 
