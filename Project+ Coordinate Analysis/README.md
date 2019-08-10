@@ -1,5 +1,19 @@
-## The Coordinate Plain
+# Project+ Coordinate Analysis, and How the B0XX Can Function Within P+
+## Forward
+
+This document and these graphics were made to apply what is said and shown in the B0XX Melee Instruction Manual to Project+. The graphics shown here replicate the ones present in that manual, as does the order of them. Because of this, I highly recommend reading this alongside the coinciding second in the Melee manual. Each graphic will have the manuals section number beside it to aid in this. Here is a link to the Melee Manual :
+
+https://drive.google.com/file/d/19N_qIS5ummLIFJF-00w72lxOuE3tHMqX/view
+
+There are two reasons why I had to make these graphics and they are the differences between Melee and Project M's (now Project+) coordinate fields.
+- The coordinate axes' range in Melee is -80 to 80, where in P+ the range is -100 to 100.
+- Actions have different zones in P+ compared to Melee.
+
+Since the range is -100 to 100, the proportion that is commonly used in Melee to express analog values will now conveniently align with how many pixels away from neutral the coordinate is.
+
+## 3. The Coordinate Plain
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/1%20-%20The%20Coordinate%20Plane.png)
+
 
 ## Tilt and Smash
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/2%20-%20Tilt%20and%20Smash.png)
