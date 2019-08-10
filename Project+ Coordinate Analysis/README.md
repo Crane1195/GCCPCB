@@ -1,4 +1,4 @@
-# Project+ Coordinate Analysis, and How the B0XX layout Can Function Within P+
+# Project+ Coordinate Analysis, and How the B0XX Layout Can Function Within P+
 ## Forward
 
 This document and these graphics were made to apply what is said and shown in the B0XX Melee Instruction Manual to Project+. The graphics shown here replicate the ones present in that manual, as does the order of them. Because of this, I highly recommend reading this alongside the matching section in the Melee manual. Each graphic will have the manuals section number beside it to aid in this.
