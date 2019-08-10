@@ -77,24 +77,82 @@ These coordinates are the same as in Melee.
   <br>
 </p>
 
-- ModX + Horizontal : This was chosen as it is the fastest walk speed in the F tilt area, and you do not fall off ledges or platforms at this speed.
-- ModX + Vertical : This was chosen as it is the pixel above crouch. It is one of 15 pixels that allow down special without falling through platforms. 
+- ModX + Horizontal : The fastest walk speed, and you do not fall off ledges or platforms at this speed. Allows for F tilts.
+- ModX + Vertical : The pixel above crouch. It is one of 15 pixels that allow down special without falling through platforms. Allows for up tilts without tap jumping.
+- ModX + Diagonal : The steepest angle that will not tap jump upon transitioning into the tap jump region. Allows for angled F tilts, and the 26 degree Firefox angle.
 
-![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/10%20-%20Modifier%20X%20part%202.png)
+![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/11%20-%20Down%20Special%20and%20Drop%20Through%20Platform.png)
 
-### Modifier Y(2)
-![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/10%20-%20Modifier%20Y%20part%201.png)
+This image shows the region in which down special will not drop you through a platform. It is 15 pixels (15% of the cardinal) as opposed to the 11 pixels (11% of the cardinal) in Melee. Whether or not one of these 15 coordinates is allowed is up for debate.
 
-![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/10%20-%20Modifier%20Y%20part%202.png)
+![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/12%20-%20Modifier%20X%20part%202.png)
 
-### Firefox and Extended Up-B Angles
-![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/11%20-%20Firefox%20and%20Extended%20Up%20B%20Angles.png)
+This image shows the "Buffer without Tap Jump" zone, which forces use to have a steeper angle than Melee's 21.3 (this angle for Firefox will be shown later).
 
-### Automatic Shield Tilt
-![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/12%20-%20Automatic%20Shield%20Tilt.png)
+<br><h3 align="center"> 5.2 Modifier Y(2) </h3><br>
 
-### Manual Shield Tilt
-![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/13%20-%20Manual%20Shield%20Tilt.png)
+![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/13%20-%20Modifier%20Y%20part%201.png)
 
-### Wavedash
-![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/14%20-%20Wavedash.png)
+<p align="center">
+  <br>
+  <i>Horizontals:</i> X .34
+  <br>
+  <i>Verticals:</i> Y .60
+  <br>
+  <i>Quadrants:</i> X .28 Y .58
+  <br>
+</p>
+
+- ModY + Horizontal : The slowest walk speed. Allows for F tilts.
+- ModY + Vertical : The point just inside the "Buffer without Tap Jump" zone I showed earlier. Allows for Up tilts without tap jumping.
+- ModY + Diagonal : The point that has the closest angle to the ModX + diagonal coordinate that was forced by the tap jump zones. Allows for Up tilts and turnaround Up tilts without tap jumping.
+
+Since disabling tap jump is an option in the controller settings, I made it so none of the modifier coordinates can tap jump. This makes modifier Y much stronger than in Melee.
+
+<br><h2 align="center"> 6. Additional Functionality </h2>
+<h3 align="center"> 6.2 Firefox and Extended Up-B Angles </h3><br>
+
+![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/15%20-%20Firefox%20and%20Extended%20Up%20B%20Angles.png)
+
+We are limited to making our diagonal + modifier angles at 26° and 64° to prevent tap jumping. This doesn't end up being an issue though for firefox angles since it is actually almost the same angle as ModX/Y + Diagonal + C-Left in Melee. Because of this, what I did was make ModX/Y + Diagonal + C-Down do the steepest allowed angles of 21.3° and 68.7°, and then kept the other angles the same. Just like with the B0XX Melee mode, all the angles are as evenly distributed as possible. The angles and inputs are as follows:
+
+<p style="margin-left: 36.5%">
+  <br>21.30° : ModX + Diagonal + C-Down
+  <br>26.04° : ModX + Diagonal
+  <br>30.78° : ModX + Diagonal + C-Left
+  <br>35.52° : ModX + Diagonal + C-Up
+  <br>40.26° : ModX + Diagonal + C-Right
+  <br>45.00° : Diagonal
+  <br>49.74° : ModY + Diagonal + C-Right
+  <br>54.48° : ModY + Diagonal + C-Up
+  <br>59.22° : ModY + Diagonal + C-Left
+  <br>63.96° : ModY + Diagonal
+  <br>68.70° : ModY + Diagonal + C-Down
+</p>
+
+Like in Melee, holding down L will give a coordinate that has the maximum magnitude closest to the angle.
+
+<br><h2 align="center"> 7. Shield </h2>
+<h3 align="center"> 7.1 Automatic Shield Tilt </h3><br>
+
+![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/16%20-%20Automatic%20Shield%20Tilt.png)
+
+This works just like how it does in Melee, except that the quadrant coordinates are different.
+
+<br><h3 align="center"> 7.2 Manual Shield Tilt </h3><br>
+
+![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/17%20-%20Manual%20Shield%20Tilt.png)
+
+This has been nerfed in the Melee mode since the Melee manual was made. I currently have it set to be the middle of the shield tilt range, but this is subject to change.
+
+<br><h2 align="center"> 8. Airdodge </h2>
+<h3 align="center"> 8.1 Wavedash </h3><br>
+
+![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/18%20-%20Wavedash.png)
+
+Once again, this works like it does in Melee mode.
+
+## Questions, Corrections, Contact, Conclusion
+This page will stay up to date with the latest B0XX PM patch, and will eventually probably be replaced by the B0XX PM Instruction Manual.
+
+Have any questions about my findings or graphics, or spot any mistakes? Feel free to PM me on Discord @Crane#1195, or ask me in my [GCCPCB discord](discord.gg/P2BxMVY), or in the [B0XX discord](discord.gg/6wcEaDU).
