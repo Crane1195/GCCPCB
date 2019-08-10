@@ -49,7 +49,7 @@ As with Melee, the zones change when airborne.
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/8%20-%20Out-of-Shield%20Options.png)
 
-There are slight differences here compared to Melee for roll, tap jump, and spot dodge, but the biggest difference is the zone for shield drop. It is barely wider at 4/100 (4%) compared to Melee's 3/80 (3.75%). What is more important though, is that it extends to the edges of the field. (0.70, -0.70), which is the exact diagonal, is a coordinate that can shield drop.
+There are slight differences here compared to Melee for roll, tap jump, and spot dodge, but the biggest difference is the zone for shield drop. It is barely wider at 4/100 (4%) compared to Melee's 3/80 (3.75%). What is more important though, is that it extends to the edges of the field. This means that the exact diagonal, (0.70, -0.70), is a coordinate that can shield drop.
 
 <br><h3 align="center"> N/A Tap Jump and Crouch </h3>
 
