@@ -17,7 +17,7 @@ Since the range is -100 to 100, the proportion that is commonly used in Melee to
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/1%20-%20The%20Coordinate%20Plane.png)
 
-The dead zone for P+'s coordinate field is slightly larger than in Melee. Melee's dead zone is 44x44 pixels, where P+'s is 54x54.
+The dead zone for P+'s coordinate field is slightly smaller than in Melee. Melee's dead zone is 45/80 (56.25%), where P+'s is 55/100 (55%).
 
 <br><h3 align="center"> 3.1. Tilt and Smash </h3>
 
@@ -49,7 +49,7 @@ As with Melee, the zones change when airborne.
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/8%20-%20Out-of-Shield%20Options.png)
 
-There are slight differences here compared to Melee for roll, tap jump, and spot dodge, but the biggest difference is the zone for shield drop. It is a pixel wider, and more importantly, it extends to the edges of the field. (0.70, -0.70), which is the exact diagonal, is a coordinate that can shield drop.
+There are slight differences here compared to Melee for roll, tap jump, and spot dodge, but the biggest difference is the zone for shield drop. It is barely wider at 4/100 (4%) compared to Melee's 3/80 (3.75%). What is more important though, is that it extends to the edges of the field. (0.70, -0.70), which is the exact diagonal, is a coordinate that can shield drop.
 
 <br><h3 align="center"> N/A Tap Jump and Crouch </h3>
 
