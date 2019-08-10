@@ -74,8 +74,11 @@ These coordinates are the same as in Melee.
   <i>Verticals:</i> Y .60
   <br>
   <i>Quadrants:</i> X .70 Y .34
-  <br><br>
+  <br>
 </p>
+
+- ModX + Horizontal : This was chosen as it is the fastest walk speed in the F tilt area, and you do not fall off ledges or platforms at this speed.
+- ModX + Vertical : This was chosen as it is the pixel above crouch. It is one of 15 pixels that allow down special without falling through platforms. 
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/10%20-%20Modifier%20X%20part%202.png)
 
