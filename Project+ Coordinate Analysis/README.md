@@ -1,11 +1,13 @@
 # Project+ Coordinate Analysis, and How the B0XX Can Function Within P+
 ## Forward
 
-This document and these graphics were made to apply what is said and shown in the B0XX Melee Instruction Manual to Project+. The graphics shown here replicate the ones present in that manual, as does the order of them. Because of this, I highly recommend reading this alongside the coinciding second in the Melee manual. Each graphic will have the manuals section number beside it to aid in this. Here is a link to the Melee Manual :
+This document and these graphics were made to apply what is said and shown in the B0XX Melee Instruction Manual to Project+. The graphics shown here replicate the ones present in that manual, as does the order of them. Because of this, I highly recommend reading this alongside the matching section in the Melee manual. Each graphic will have the manuals section number beside it to aid in this.
+
+Here is a link to the Melee Manual :
 
 https://drive.google.com/file/d/19N_qIS5ummLIFJF-00w72lxOuE3tHMqX/view
 
-There are two reasons why I had to make these graphics and they are the differences between Melee and Project M's (now Project+) coordinate fields.
+There are two reasons why I had to make these graphics.
 - The coordinate axes' range in Melee is -80 to 80, where in P+ the range is -100 to 100.
 - Actions have different zones in P+ compared to Melee.
 
@@ -14,11 +16,13 @@ Since the range is -100 to 100, the proportion that is commonly used in Melee to
 <br><h3 align="center"> 3. The Coordinate Plane </h3>
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/1%20-%20The%20Coordinate%20Plane.png)
+
 The dead zone for P+'s coordinate field is slightly larger than in Melee. Melee's dead zone is 44x44 pixels, where P+'s is 54x54.
 
 <br><h3 align="center"> 3.1. Tilt and Smash </h3>
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/2%20-%20Tilt%20and%20Smash.png)
+
 Notable differences are that P+'s tilt zone is square as apposed to Melee's rectangular zone, P+'s X-Tilt region is narrower, and P+'s Y-Tilt region is wider.
 
 <br><h3 align="center"> 3.2. 50° Line </h3>
@@ -87,7 +91,7 @@ This image shows the region in which down special will not drop you through a pl
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/12%20-%20Modifier%20X%20part%202.png)
 
-This image shows the "Buffer without Tap Jump" zone, which forces use to have a steeper angle than Melee's 21.3 (this angle for Firefox will be shown later).
+This image shows the "Buffer without Tap Jump" zone, which forces us to have a steeper angle than Melee's 21.3 (this angle for Firefox will be shown later).
 
 <br><h3 align="center"> 5.2 Modifier Y(2) </h3><br>
 
