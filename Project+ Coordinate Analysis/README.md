@@ -21,7 +21,7 @@ All the values in this document were acquired using Project+ v1.05b Netplay Hotf
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/1%20-%20The%20Coordinate%20Plane.png)
 
-The dead zone for P+'s coordinate field is slightly smaller than in Melee. Melee's dead zone is 45/80 (56.25%), where P+'s is 55/100 (55%).
+The dead zone for P+'s coordinate field is slightly smaller than in Melee. Melee's dead zone is 22/80 (27.5%), where P+'s is 27/100 (27%).
 
 <br><h3 align="center"> 3.1. Tilt and Smash </h3>
 
