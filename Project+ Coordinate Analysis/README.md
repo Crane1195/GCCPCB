@@ -11,7 +11,7 @@ There are two reasons why I had to make these graphics.
 - The coordinate axes' range in Melee is -80 to 80, where in P+ the range is -100 to 100.
 - Actions have different zones in P+ compared to Melee.
 
-Since the range is -100 to 100, the proportion that is commonly used in Melee to express analog values will now conveniently align with how many pixels away from neutral the coordinate is.
+Since the range is -100 to 100, the proportion that is commonly used in Melee to express analog values (-1.0000 to 1.0000) will now conveniently align with how many pixels away from neutral the coordinate is.
 
 ## Testing Methodology
 
@@ -61,7 +61,7 @@ There are slight differences here compared to Melee for roll, tap jump, and spot
 
 This is not a visual in the Melee Manual, but I want to bring it up before discussing modifiers, as it is important. In PM, when in the zone I marked "Buffer without Tap Jump", you can then transition to the Tap Jump zone without actually tap jumping. Any coordinate below .34 on the Y axis when transitioning to any coordinate above .68 on the Y axis will tap jump. If anyone has a better term then "Buffer without Tap Jump" to describe this, let me know and I will update the visual.
 
-I also show the coordinates that are associated with crouching. These three zones will be heavily influencing the coordinates I chose for the B0XX modifiers.
+I also show the coordinates that are associated with crouching. These three zones influenced the coordinates I chose for the B0XX modifiers.
 
 <br><h2 align="center"> 4. Analog Stick Behavior </h2>
 <h3 align="center"> 4.1 Un-Modified Inputs </h3><br>
@@ -91,7 +91,7 @@ These coordinates are the same as in Melee.
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/11%20-%20Down%20Special%20and%20Drop%20Through%20Platform.png)
 
-This image shows the region in which down special will not drop you through a platform. It is 15/100 pixels (15%) as opposed to the 11/80 pixels (13.75%) in Melee. Whether or not one of these 15 coordinates is allowed is up for debate. The Melee mode's coordinate as of patch 2.0 is no longer within these 11 pixels, so perhaps the PM mode should match. 
+This image shows the region in which down special will not drop you through a platform. It is 15/100 pixels (15%) as opposed to the 11/80 pixels (13.75%) in Melee. Whether or not one of these 15 coordinates is allowed is up for debate. The Melee mode's coordinate as of patch 2.0 is no longer within these 11 pixels, so perhaps the PM mode should match.
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/12%20-%20Modifier%20X%20part%202.png)
 
@@ -112,7 +112,7 @@ This image shows the "Buffer without Tap Jump" zone, which forces us to have a s
 </p>
 
 - ModY + Horizontal : The slowest walk speed. Allows for F tilts.
-- ModY + Vertical : The point just inside the "Buffer without Tap Jump" zone I showed earlier. Allows for Up tilts without tap jumping. This value could be anywhere from .34 to .67 depending on whether it should be neutral/vertical special, whether or not it should crouch, and whether or not it should drop through platforms. This is up for debate. 
+- ModY + Vertical : The point just inside the "Buffer without Tap Jump" zone I showed earlier. Allows for Up tilts without tap jumping. This value could be anywhere from .34 to .67 depending on whether it should be neutral/vertical special, whether or not it should crouch, and whether or not it should drop through platforms. This is up for debate.
 - ModY + Diagonal : The point that has the closest angle to the ModX + diagonal coordinate that was forced by the tap jump zones. Allows for Up tilts and turnaround Up tilts without tap jumping.
 
 Since disabling tap jump is an option in the controller settings, I made it so none of the modifier coordinates can tap jump. This makes modifier Y much stronger than in Melee.
