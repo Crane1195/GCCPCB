@@ -13,6 +13,10 @@ There are two reasons why I had to make these graphics.
 
 Since the range is -100 to 100, the proportion that is commonly used in Melee to express analog values will now conveniently align with how many pixels away from neutral the coordinate is.
 
+## Testing Methodology
+
+All the values in this document were acquired using Project+ v1.05b Netplay Hotfix [FM Edition]. The values selected for the B0XX also work as intended in PM Netplay v4, and on PM 3.6 on console, so I have no reason to believe the coordinate field has changed between any of these versions. If you happen to know any changes between the versions, feel free to let me know.
+
 <br><h3 align="center"> 3. The Coordinate Plane </h3>
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/1%20-%20The%20Coordinate%20Plane.png)
