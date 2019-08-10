@@ -1,1 +1,1 @@
-![image](https://github.com/Crane1195/GCCPCB/Project+_Coordinate_Analysis/images/1_The_Coordinate_Plane.png)
+![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/1%20-%20The%20Coordinate%20Plane.png)
