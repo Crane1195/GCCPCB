@@ -13,11 +13,15 @@ There are two reasons why I had to make these graphics.
 
 Since the range is -100 to 100, the proportion that is commonly used in Melee to express analog values will now conveniently align with how many pixels away from neutral the coordinate is.
 
+## Testing Methodology
+
+All the values in this document were acquired using Project+ v1.05b Netplay Hotfix [FM Edition]. The values selected for the B0XX also work as intended in PM Netplay v4, and on PM 3.6 on console, so I have no reason to believe the coordinate field has changed between any of these versions. If you happen to know any changes between the versions, feel free to let me know.
+
 <br><h3 align="center"> 3. The Coordinate Plane </h3>
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/1%20-%20The%20Coordinate%20Plane.png)
 
-The dead zone for P+'s coordinate field is slightly larger than in Melee. Melee's dead zone is 44x44 pixels, where P+'s is 54x54.
+The dead zone for P+'s coordinate field is slightly smaller than in Melee. Melee's dead zone is 22/80 (27.5%), where P+'s is 27/100 (27%).
 
 <br><h3 align="center"> 3.1. Tilt and Smash </h3>
 
@@ -49,7 +53,7 @@ As with Melee, the zones change when airborne.
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/8%20-%20Out-of-Shield%20Options.png)
 
-There are slight differences here compared to Melee for roll, tap jump, and spot dodge, but the biggest difference is the zone for shield drop. It is a pixel wider, and more importantly, it extends to the edges of the field. (0.70, -0.70), which is the exact diagonal, is a coordinate that can shield drop.
+There are slight differences here compared to Melee for roll, tap jump, and spot dodge, but the biggest difference is the zone for shield drop. It is barely wider at 4/100 (4%) compared to Melee's 3/80 (3.75%). What is more important though, is that it extends to the edges of the field. This means that the exact diagonal, (0.70, -0.70), is a coordinate that can shield drop.
 
 <br><h3 align="center"> N/A Tap Jump and Crouch </h3>
 
@@ -87,7 +91,7 @@ These coordinates are the same as in Melee.
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/11%20-%20Down%20Special%20and%20Drop%20Through%20Platform.png)
 
-This image shows the region in which down special will not drop you through a platform. It is 15 pixels (15% of the cardinal) as opposed to the 11 pixels (11% of the cardinal) in Melee. Whether or not one of these 15 coordinates is allowed is up for debate.
+This image shows the region in which down special will not drop you through a platform. It is 15/100 pixels (15%) as opposed to the 11/80 pixels (13.75%) in Melee. Whether or not one of these 15 coordinates is allowed is up for debate. The Melee mode's coordinate as of patch 2.0 is no longer within these 11 pixels, so perhaps the PM mode should match. 
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/12%20-%20Modifier%20X%20part%202.png)
 
@@ -99,16 +103,16 @@ This image shows the "Buffer without Tap Jump" zone, which forces us to have a s
 
 <p align="center">
   <br>
-  <i>Horizontals:</i> X .34
+  <i>Horizontals:</i> X .28
   <br>
-  <i>Verticals:</i> Y .60
+  <i>Verticals:</i> Y .34
   <br>
   <i>Quadrants:</i> X .28 Y .58
   <br>
 </p>
 
 - ModY + Horizontal : The slowest walk speed. Allows for F tilts.
-- ModY + Vertical : The point just inside the "Buffer without Tap Jump" zone I showed earlier. Allows for Up tilts without tap jumping.
+- ModY + Vertical : The point just inside the "Buffer without Tap Jump" zone I showed earlier. Allows for Up tilts without tap jumping. This value could be anywhere from .34 to .67 depending on whether it should be neutral/vertical special, whether or not it should crouch, and whether or not it should drop through platforms. This is up for debate. 
 - ModY + Diagonal : The point that has the closest angle to the ModX + diagonal coordinate that was forced by the tap jump zones. Allows for Up tilts and turnaround Up tilts without tap jumping.
 
 Since disabling tap jump is an option in the controller settings, I made it so none of the modifier coordinates can tap jump. This makes modifier Y much stronger than in Melee.
