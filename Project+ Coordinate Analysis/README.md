@@ -103,16 +103,16 @@ This image shows the "Buffer without Tap Jump" zone, which forces us to have a s
 
 <p align="center">
   <br>
-  <i>Horizontals:</i> X .34
+  <i>Horizontals:</i> X .28
   <br>
-  <i>Verticals:</i> Y .60
+  <i>Verticals:</i> Y .34
   <br>
   <i>Quadrants:</i> X .28 Y .58
   <br>
 </p>
 
 - ModY + Horizontal : The slowest walk speed. Allows for F tilts.
-- ModY + Vertical : The point just inside the "Buffer without Tap Jump" zone I showed earlier. Allows for Up tilts without tap jumping.
+- ModY + Vertical : The point just inside the "Buffer without Tap Jump" zone I showed earlier. Allows for Up tilts without tap jumping. This value could be anywhere from .34 to .67 depending on whether it should be neutral/vertical special, whether or not it should crouch, and whether or not it should drop through platforms. This is up for debate. 
 - ModY + Diagonal : The point that has the closest angle to the ModX + diagonal coordinate that was forced by the tap jump zones. Allows for Up tilts and turnaround Up tilts without tap jumping.
 
 Since disabling tap jump is an option in the controller settings, I made it so none of the modifier coordinates can tap jump. This makes modifier Y much stronger than in Melee.
