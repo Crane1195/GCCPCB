@@ -55,7 +55,7 @@ These coordinates are the same as in Melee.
   <i>Verticals:</i> Y .60
   <br>
   <i>Quadrants:</i> X .70 Y .34
-  <br>
+  <br><br>
 </p>
 
 ![image](https://raw.githubusercontent.com/Crane1195/GCCPCB/master/Project%2B%20Coordinate%20Analysis/images/10%20-%20Modifier%20X%20part%202.png)
