@@ -100,8 +100,8 @@ const int CUP = 8;
 const int EXTRA1 = 11;
 const int EXTRA2 = 10;
 
-const uint8_t minValue = 48;
-const uint8_t maxValue = 208;
+const uint8_t minValue = 28;
+const uint8_t maxValue = 228;
 
 void setup()
 {
@@ -247,30 +247,32 @@ void loop()
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 59);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 40);
-        if (currentGame == PM) controlX = 128 + (positionX * 49);
+        if (currentGame == PM) controlX = 128 + (positionX * 70);
       }
       if (VERTICAL) {
         if (currentGame == Melee) controlY = 128 + (positionY * 52);
         if (currentGame == Ultimate) controlY = 128 + (positionY * 49);
-        if (currentGame == PM) controlY = 128 + (positionY * 65);
+        if (currentGame == PM) controlY = 128 + (positionY * 60);
       }
+     
       if (isA) {
         if (currentGame == Melee) controlX = 128 + (positionX * 47);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 47);
         if (currentGame == PM) controlX = 128 + (positionX * 47);
       }
+      
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 59);
         if (currentGame == Ultimate) {
           controlX = 128 + (positionX * 47);
           controlY = 128 + (positionY * 41);
         }
-        if (currentGame == PM) controlX = 128 + (positionX * 59);
       }
       if (positionCX != 0){
         cstickX = 128 + (positionCX * 65);
         cstickY = 128 + 40;
       }
+      
       if (DIAGONAL) {
         if (currentGame == Melee) {
           controlX = 128 + (positionX * 59);
@@ -278,12 +280,12 @@ void loop()
         }
         if (currentGame == Ultimate) {
           controlX = 128 + (positionX * 40);
-          controlY = 128 + (positionY * 40);
+          controlY = 128 + (positionY * 26);
           if (isB) controlX = 128 + (positionX * 53);
         }
         if (currentGame == PM) {
-          controlX = 128 + (positionX * 68);
-          controlY = 128 + (positionY * 28);
+          controlX = 128 + (positionX * 70);
+          controlY = 128 + (positionY * 34);
         }
 
         if (isCUP) {
@@ -296,8 +298,8 @@ void loop()
             controlY = 128 + (positionY * 35);
           }
           if (currentGame == PM) {
-            controlX = 128 + (positionX * 53);
-            controlY = 128 + (positionY * 37);
+            controlX = 128 + (positionX * 77);
+            controlY = 128 + (positionY * 55);
           }
         }
 
@@ -311,8 +313,8 @@ void loop()
             controlY = 128 + (positionY * 49);
           }
           if (currentGame == PM) {
-            controlX = 128 + (positionX * 62);
-            controlY = 128 + (positionY * 30);
+            controlX = 128 + (positionX * 82);
+            controlY = 128 + (positionY * 32);
           }
         }
 
@@ -326,8 +328,8 @@ void loop()
             controlY = 128 + (positionY * 42);
           }
           if (currentGame == PM) {
-            controlX = 128 + (positionX * 63);
-            controlY = 128 + (positionY * 37);
+            controlX = 128 + (positionX * 84);
+            controlY = 128 + (positionY * 50);
           }
         }
 
@@ -341,8 +343,8 @@ void loop()
             controlY = 128 + (positionY * 27);
           }
           if (currentGame == PM) {
-            controlX = 128 + (positionX * 51);
-            controlY = 128 + (positionY * 42);
+            controlX = 128 + (positionX * 72);
+            controlY = 128 + (positionY * 61);
           }
         }
 
@@ -353,7 +355,7 @@ void loop()
           }
           else if (positionCX == 1){ /********/
             cstickX = 128;
-            cstickY = 128+80;
+            cstickY = 128+100;
             controlX = 128 + (positionX * 45);
             controlY = 128 + (positionY * 22);
           }
@@ -376,18 +378,20 @@ void loop()
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 23);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 27);
-        if (currentGame == PM) controlX = 128 + (positionX * 33);
+        if (currentGame == PM) controlX = 128 + (positionX * 28);
       }
       if (VERTICAL) {
         if (currentGame == Melee) controlY = 128 + (positionY * 59);
         if (currentGame == Ultimate) controlY = 128 + (positionY * 51);
-        if (currentGame == PM) controlY = 128 + (positionY * 59);
+        if (currentGame == PM) controlY = 128 + (positionY * 34);
       }
+      
       if (isA) {
         if (currentGame == Melee) controlX = 128 + (positionX * 35);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 41);
         if (currentGame == PM) controlX = 128 + (positionX * 35);
       }
+      
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 59);
         if (currentGame == Ultimate) {
@@ -406,12 +410,12 @@ void loop()
           controlY = 128 + (positionY * 59);
         }
         if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 39);
-          controlY = 128 + (positionY * 51);
+          controlX = 128 + (positionX * 38);
+          controlY = 128 + (positionY * 49);
         }
         if (currentGame == PM) {
           controlX = 128 + (positionX * 28);
-          controlY = 128 + (positionY * 68);
+          controlY = 128 + (positionY * 58);
         }
 
         if (isCUP) {
@@ -424,8 +428,8 @@ void loop()
             controlY = 128 + (positionY * 71);
           }
           if (currentGame == PM) {
-            controlX = 128 + (positionX * 44);
-            controlY = 128 + (positionY * 63);
+            controlX = 128 + (positionX * 55);
+            controlY = 128 + (positionY * 77);
           }
         }
 
@@ -439,8 +443,8 @@ void loop()
             controlY = 128 + (positionY * 61);
           }
           if (currentGame == PM) {
-            controlX = 128 + (positionX * 31);
-            controlY = 128 + (positionY * 64);
+            controlX = 128 + (positionX * 32);
+            controlY = 128 + (positionY * 82);
           }
         }
 
@@ -454,8 +458,8 @@ void loop()
             controlY = 128 + (positionY * 66);
           }
           if (currentGame == PM) {
-            controlX = 128 + (positionX * 37);
-            controlY = 128 + (positionY * 63);
+            controlX = 128 + (positionX * 50);
+            controlY = 128 + (positionY * 84);
           }
         }
 
@@ -469,8 +473,8 @@ void loop()
             controlY = 128 + (positionY * 75);
           }
           if (currentGame == PM) {
-            controlX = 128 + (positionX * 47);
-            controlY = 128 + (positionY * 57);
+            controlX = 128 + (positionX * 62);
+            controlY = 128 + (positionY * 72);
           }
         }
 
@@ -494,16 +498,22 @@ void loop()
 
     if (isL && (paluShorten == false)) {
       LLight = 140;
-      if (HORIZONTAL) controlX = 128 + (positionX * 80);
-      if (VERTICAL) controlY = 128 + (positionY * 80);
+      if (HORIZONTAL) controlX = 128 + (positionX * 100);
+      if (VERTICAL) controlY = 128 + (positionY * 100);
       if (HORIZONTAL && (positionY == 1)) {
-        controlX = 128 + (positionX * 52);
-        controlY = 128 + 52;
+        if (currentGame == Melee){
+          controlX = 128 + (positionX * 52);
+          controlY = 128 + 52;
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 67);
+          controlY = 128 + 67;
+        }
       }
       if (HORIZONTAL && (positionY == -1)) {
         controlX = 128 + (positionX * 58);
         if (currentGame == Melee) controlY = 128 - 55;
-        else {controlX = 128 + (positionX * 80); controlY = minValue;}
+        else {controlX = 128 + (positionX * 100); controlY = minValue;}
       }
       if ((currentGame == Melee) && (isMOD1 || isMOD2)) {
         isL = false;
@@ -526,21 +536,31 @@ void loop()
       if (HORIZONTAL) {
         if (currentGame == Ultimate)
           controlX = 128 + (positionX * 51);
-        else
+        if (currentGame == Melee)
           controlX = 128 + (positionX * 55);
+        if (currentGame == PM)
+          controlX = 128 + (positionX * 48);
       }
       if (VERTICAL) {
         if (currentGame == Ultimate)
           controlY = 128 + (positionY * 51);
-        else
+        if (currentGame == Melee)
           controlY = 128 + (positionY * 52);
+        if (currentGame == PM)
+          controlY = 128 + (positionY * 48);
       }
       if (DIAGONAL)
-        if (currentGame != Ultimate) controlX = 128 + (positionX * 52);
+        if (currentGame == Melee) controlX = 128 + (positionX * 52);
       if (HORIZONTAL && isDOWN) {
         if (isMOD1) {
-          controlX = 128 + (positionX * 68);
-          controlY = 128 + (positionY * 40);
+          if (currentGame == Melee){
+            controlX = 128 + (positionX * 68);
+            controlY = 128 + (positionY * 40);
+          }
+          if (currentGame == PM){
+            controlX = 128 + (positionX * 68);
+            controlY = 128 + (positionY * 40);
+          }
         }
         if (isMOD2) {
           controlX = 128 + (positionX * 40);
