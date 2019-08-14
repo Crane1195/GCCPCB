@@ -1,5 +1,5 @@
 /*
-  GCCPCB v1.0 code by Crane.
+  GCCPCB v1.1 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
     dmadison's Nintendo Extension Ctrl library
@@ -254,13 +254,13 @@ void loop()
         if (currentGame == Ultimate) controlY = 128 + (positionY * 49);
         if (currentGame == PM) controlY = 128 + (positionY * 60);
       }
-     
+
       if (isA) {
         if (currentGame == Melee) controlX = 128 + (positionX * 47);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 47);
         if (currentGame == PM) controlX = 128 + (positionX * 47);
       }
-      
+
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 59);
         if (currentGame == Ultimate) {
@@ -272,7 +272,7 @@ void loop()
         cstickX = 128 + (positionCX * 65);
         cstickY = 128 + 40;
       }
-      
+
       if (DIAGONAL) {
         if (currentGame == Melee) {
           controlX = 128 + (positionX * 59);
@@ -385,13 +385,13 @@ void loop()
         if (currentGame == Ultimate) controlY = 128 + (positionY * 51);
         if (currentGame == PM) controlY = 128 + (positionY * 34);
       }
-      
+
       if (isA) {
         if (currentGame == Melee) controlX = 128 + (positionX * 35);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 41);
         if (currentGame == PM) controlX = 128 + (positionX * 35);
       }
-      
+
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 59);
         if (currentGame == Ultimate) {
