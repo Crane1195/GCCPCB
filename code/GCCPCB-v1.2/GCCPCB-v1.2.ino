@@ -1,5 +1,5 @@
 /*
-  GCCPCB v1.1 code by Crane.
+  GCCPCB v1.2 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
     dmadison's Nintendo Extension Ctrl library
