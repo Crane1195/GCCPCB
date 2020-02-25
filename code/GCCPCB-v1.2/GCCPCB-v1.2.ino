@@ -456,8 +456,8 @@ void loop()
 
     if (isLightShieldButtons && (currentGame == Melee)) {
       if (isEXTRA1 || isEXTRA2) {
-        if (isEXTRA1) LLight = 80;
-        if (isEXTRA2) LLight = 100;
+        if (isEXTRA1) RLight = 49;
+        if (isEXTRA2) RLight = 94;
 
         if (HORIZONTAL && (positionY == -1)) {
           controlX = 128 + (positionX * 57);
