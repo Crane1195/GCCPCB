@@ -1,19 +1,17 @@
 /*
-  GCCPCB v1.2 code by Crane.
+  DIYB0XX Native USB v1.201 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
-    dmadison's Nintendo Extension Ctrl library
     MHeironimus' Arduino Joystick Library.
-  This is code designed with my GCCPCB in mind. It is the only device I can confirm will work with this code. If
-  you use it on any other device, do so at your own risk. Though this code should work on 32u4 based Arduino's like
-  the Leonardo, Micro, and Pro Micro with a Nunchuk port wired to the SDA and SCL pins.
-  A version of this code is available without native USB joystick support and nunchuk support for DIY controllers
+  This is code designed with native USB 8 bit AVR microcontrollers in mind.
+  I test these on my 32u4 boards (Like the Arduino Micro).
+  If you use it on any other device, do so at your own risk.
+  A version of this code is available without native USB joystick support DIY controllers
   using other Arduinos here https://github.com/Crane1195/DIYB0XX/tree/master/code
 
   Read the README file for whichever of these you are using for more information.
 */
 #include "Nintendo.h"
-#include <NintendoExtensionCtrl.h>
 #include <Joystick.h>
 
 bool isLightShieldButtons = true;
@@ -77,8 +75,6 @@ game currentGame = Melee;
 device currentDevice = GC;
 SOCD currentSOCD = TwoIPNoReactivate;
 
-Nunchuk nchuk;
-
 const int L = 16;
 const int LEFT = 1;
 const int DOWN = 0;
@@ -108,8 +104,6 @@ const uint8_t maxValue = 228;
 
 void setup()
 {
-  nchuk.begin();
-  nchuk.connect();
 
   pinMode(L, INPUT_PULLUP);
   pinMode(LEFT, INPUT_PULLUP);
@@ -134,9 +128,11 @@ void setup()
     pinMode(EXTRA2, INPUT_PULLUP);
   }
 
-  if (digitalRead(CDOWN) == LOW)
-  {
+  if (digitalRead(CDOWN) == LOW) {
     currentDevice = PC;
+  }
+
+  if (currentDevice == PC) {
     Joystick.begin();
     Joystick.setXAxisRange(0, 255);
     Joystick.setYAxisRange(0, 255);
@@ -201,8 +197,6 @@ void loop()
   bool VERTICAL = false;
   bool DIAGONAL = false;
 
-  /********* No nunchuk *********/
-  if (!nchuk.update()) {
     /********* SOCD *********/
     if (currentSOCD == TwoIPNoReactivate) {
       controlX = fTwoIPNoReactivate(isLEFT, isRIGHT, wasLEFT, wasRIGHT, lockLEFT, lockRIGHT);
@@ -511,8 +505,10 @@ void loop()
       }
       if ((currentGame == Melee) && (isMOD1 || isMOD2)) {
         if (!isLightShieldButtons) {
-          isL = false;
-          LLight = 80;
+          if (!(isMOD1 && isMOD2)) {
+            isL = false;
+            LLight = 80;
+          }
         }
 
         if (DIAGONAL) {
@@ -564,41 +560,6 @@ void loop()
         }
       }
     }
-
-  }
-  /********* Nunchuk *********/
-  else
-  {
-    isL = false; isUP = false; isDOWN = false; isLEFT = false; isRIGHT = false;
-    bool isZ = nchuk.buttonZ();
-    bool isC = nchuk.buttonC();
-
-    if (isC && isZ)
-      LLight = 80;
-    if (!isC && isZ) {
-      LLight = 140;
-      isL = true;
-    }
-
-    /*********C Stick*********/
-    if (currentSOCD == TwoIPNoReactivate) {
-      cstickX = fTwoIPNoReactivate(isCLEFT, isCRIGHT, wasCLEFT, wasCRIGHT, lockCLEFT, lockCRIGHT);
-      cstickY = fTwoIPNoReactivate(isCDOWN, isCUP, wasCDOWN, wasCUP, lockCDOWN, lockCUP);
-    }
-
-    if (currentSOCD == TwoIP){
-      cstickX = fTwoIP(isCLEFT, isCRIGHT, wasCLEFT, wasCRIGHT);
-      cstickY = fTwoIP(isCDOWN, isCUP, wasCDOWN, wasCUP);
-    }
-
-    if (currentSOCD == Neutral) {
-      cstickX = fNeutral(isCLEFT, isCRIGHT);
-      cstickY = fNeutral(isCDOWN, isCUP);
-    }
-
-    controlX = nchuk.joyX();
-    controlY = nchuk.joyY();
-  }
 
 /********* DPAD *********/
 //Comment out line 588, and uncomment 589 if you want to use a dpad switch/button on the EXTRA2 terminal.
