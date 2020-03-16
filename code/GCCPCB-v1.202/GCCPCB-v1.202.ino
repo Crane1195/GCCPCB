@@ -637,7 +637,10 @@ void loop()
     Joystick.setYAxis(controlY);
     Joystick.setRxAxis(cstickX);
     Joystick.setRyAxis(cstickY);
-    Joystick.setThrottle(LLight);
+    if (isLightShieldButtons)
+      Joystick.setThrottle(RLight);
+    else
+      Joystick.setThrottle(LLight);
   }
   /********* GC Report *********/
   else {
