@@ -1,13 +1,13 @@
 # Which to use?
-If you are using a GCCPCB 1.0, download the latest GCCPCB-vX.Y.ino release here https://github.com/Crane1195/GCCPCB/releases
+* If you are using a GCCPCB 1.0, download the latest GCCPCB-vX.Y.ino release here https://github.com/Crane1195/GCCPCB/releases
 
-If you are using a GCCPCB 2.0, download the latest GCCPCB2-vX.Y.ino release here https://github.com/Crane1195/GCCPCB/releases
+* If you are using a GCCPCB 2.0, download the latest GCCPCB2-vX.Y.ino release here https://github.com/Crane1195/GCCPCB/releases
 
-If you are using a native USB Arduino like the Arduino Micro, download the latest NativeUSB-vX.Y.ino release here https://github.com/Crane1195/DIYB0XX/releases
+* If you are using a native USB Arduino like the Arduino Micro, download the latest NativeUSB-vX.Y.ino release here https://github.com/Crane1195/DIYB0XX/releases
 
-If you are using a non native USB Arduino like the Mega2560 or Nano, download the latest DIYB0XX-vX.Y.ino release here https://github.com/Crane1195/DIYB0XX/releases
+* If you are using a non native USB Arduino like the Mega2560 or Nano, download the latest DIYB0XX-vX.Y.ino release here https://github.com/Crane1195/DIYB0XX/releases
 
-If you are using a Smashbox, download the latest DIYSmashB0XX-vX.Y.ino release here (this is the same as DIYB0XX-vX.Y.ino but it has the Smashbox pinout already filled in) https://github.com/Crane1195/DIYB0XX/releases
+* If you are using a Smashbox, download the latest DIYSmashB0XX-vX.Y.ino release here (this is the same as DIYB0XX-vX.Y.ino but it has the Smashbox pinout already filled in) https://github.com/Crane1195/DIYB0XX/releases
 
 
 # Credits
