@@ -20,7 +20,7 @@ Extract the Joystick folder out of the ArduinoJoystickLibrary-master ZIP file, a
 
 Download GCCPCB-vX.Y.ino from the latest release here https://github.com/Crane1195/GCCPCB/releases. Make a folder with the same name as the file (GCCPCB-vX.Y) and put the .ino file in this folder. Place the newly created Joystick.zip file, as well as the Nintendo-master.zip file in this folder as well.
 
-![image](https://i.imgur.com/GfxKsp1.png)
+![image](https://i.imgur.com/W2LNSte.png)
 
 Your folder should look like this.
 
@@ -32,7 +32,7 @@ https://www.arduino.cc/en/Main/Software
 
 After installing the Arduino IDE, open GCCPCB-XX.ino, and add the libraries using this menu option.
 
-![image](https://i.imgur.com/S65sGQo.png)
+![image](https://i.imgur.com/RMcqLRM.png)
 
 Navigate to where you have the GCCPCB-XX folder, and double click one, then repeat the process for the others. You will only need to install these libraries and the Arduino IDE once. For future updates, you will just have to download the new code, and upload it using the method below.
 
