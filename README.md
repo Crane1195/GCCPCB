@@ -1,5 +1,5 @@
 ![image](https://i.imgur.com/DaSF62C.png)
-![image](https://i.imgur.com/NjGG8T6.jpg)
+![image](https://i.imgur.com/nOVuDio.png)
 
 /Project+ Coordinate Analysis contains information about P+/PM that I collected to aid in making a two modifier layout for the game.
 
