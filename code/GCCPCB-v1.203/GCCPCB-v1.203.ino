@@ -1,17 +1,20 @@
 /*
-  DIYB0XX Native USB v1.201 code by Crane.
+  GCCPCB v1.203 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
+    dmadison's Nintendo Extension Ctrl library
     MHeironimus' Arduino Joystick Library.
-  This is code designed with native USB 8 bit AVR microcontrollers in mind.
-  I test these on my 32u4 boards (Like the Arduino Micro).
-  If you use it on any other device, do so at your own risk.
-  A version of this code is available without native USB joystick support DIY controllers
-  using other Arduinos here https://github.com/Crane1195/DIYB0XX/tree/master/code
 
-  Read the README file for whichever of these you are using for more information.
+  This is code designed with my GCCPCB 1.0 in mind. It is the only device I can confirm will work with this code. If
+  you use it on any other device, do so at your own risk.
+
+  If you are using a GCCPCB 2.0, you picked the wrong release file.
+
+  A version of this code is available for DIYB0XXes
+  using other Arduinos here https://github.com/Crane1195/DIYB0XX/tree/master/code
 */
 #include "Nintendo.h"
+#include <NintendoExtensionCtrl.h>
 #include <Joystick.h>
 
 bool isLightShieldButtons = true;
@@ -75,12 +78,14 @@ game currentGame = Melee;
 device currentDevice = GC;
 SOCD currentSOCD = TwoIPNoReactivate;
 
+Nunchuk nchuk;
+
 const int L = 16;
 const int LEFT = 1;
 const int DOWN = 0;
 const int RIGHT = 4;
-const int MOD1 = 5;
-const int MOD2 = 6;
+const int MODX = 5;
+const int MODY = 6;
 
 const int START = 7;
 const int B = A2;
@@ -104,13 +109,15 @@ const uint8_t maxValue = 228;
 
 void setup()
 {
+  nchuk.begin();
+  nchuk.connect();
 
   pinMode(L, INPUT_PULLUP);
   pinMode(LEFT, INPUT_PULLUP);
   pinMode(DOWN, INPUT_PULLUP);
   pinMode(RIGHT, INPUT_PULLUP);
-  pinMode(MOD1, INPUT_PULLUP);
-  pinMode(MOD2, INPUT_PULLUP);
+  pinMode(MODX, INPUT_PULLUP);
+  pinMode(MODY, INPUT_PULLUP);
   pinMode(START, INPUT_PULLUP);
   pinMode(B, INPUT_PULLUP);
   pinMode(X, INPUT_PULLUP);
@@ -159,8 +166,8 @@ void loop()
   bool isLEFT   = (digitalRead(LEFT) == LOW);
   bool isDOWN   = (digitalRead(DOWN) == LOW);
   bool isRIGHT  = (digitalRead(RIGHT) == LOW);
-  bool isMOD1   = (digitalRead(MOD1) == LOW);
-  bool isMOD2   = (digitalRead(MOD2) == LOW);
+  bool isMODX   = (digitalRead(MODX) == LOW);
+  bool isMODY   = (digitalRead(MODY) == LOW);
   bool isSTART  = (digitalRead(START) == LOW);
   bool isB      = (digitalRead(B) == LOW);
   bool isX      = (digitalRead(X) == LOW);
@@ -197,6 +204,8 @@ void loop()
   bool VERTICAL = false;
   bool DIAGONAL = false;
 
+  /********* No nunchuk *********/
+  if (!nchuk.update()) {
     /********* SOCD *********/
     if (currentSOCD == TwoIPNoReactivate) {
       controlX = fTwoIPNoReactivate(isLEFT, isRIGHT, wasLEFT, wasRIGHT, lockLEFT, lockRIGHT);
@@ -241,7 +250,7 @@ void loop()
     }
     /********* Modifiers *********/
 
-    if (isMOD1) {
+    if (isMODX) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 53);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 40);
@@ -347,7 +356,7 @@ void loop()
       }
     }
 
-    if (isMOD2) {
+    if (isMODY) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 27);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 27);
@@ -450,15 +459,22 @@ void loop()
 
     if (isLightShieldButtons && (currentGame == Melee)) {
       if (isEXTRA1 || isEXTRA2) {
-        if (isEXTRA1) RLight = 49;
-        if (isEXTRA2) RLight = 94;
+        if (currentDevice == PC) {
+          if (isEXTRA1) RLight = 50;
+          if (isEXTRA2) RLight = 95;
+        }
+        else {
+          if (isEXTRA1) RLight = 80;
+          if (isEXTRA2) RLight = 125;
+        }
+
 
         if (HORIZONTAL && (positionY == -1)) {
           controlX = 128 + (positionX * 57);
           controlY = 128 - 55;
         }
 
-        if (isMOD1) {
+        if (isMODX) {
           if (HORIZONTAL) {
             if (currentGame == Ultimate)
               controlX = 128 + (positionX * 51);
@@ -503,20 +519,20 @@ void loop()
         if (currentGame == Melee) controlY = 128 - 55;
         else {controlX = 128 + (positionX * 100); controlY = minValue;}
       }
-      if ((currentGame == Melee) && (isMOD1 || isMOD2)) {
+      if ((currentGame == Melee) && (isMODX || isMODY)) {
         if (!isLightShieldButtons) {
-          if (!(isMOD1 && isMOD2)) {
+          if (!(isMODX && isMODY)) {
             isL = false;
             LLight = 80;
           }
         }
 
         if (DIAGONAL) {
-          if (isMOD1) {
+          if (isMODX) {
             controlX = 128 + (positionX * 51);
             controlY = 128 + (positionY * 30);
           }
-          if (isMOD2) {
+          if (isMODY) {
             controlX = 128 + (positionX * 40);
             controlY = 128 + (positionY * 68);
           }
@@ -544,7 +560,7 @@ void loop()
       }
       if (DIAGONAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 43);
-        if (isMOD1) {
+        if (isMODX) {
           if (currentGame == Melee){
             controlX = 128 + (positionX * 51);
             controlY = 128 + (positionY * 30);
@@ -554,17 +570,50 @@ void loop()
             controlY = 128 + (positionY * 40);
           }
         }
-        if (isMOD2) {
+        if (isMODY) {
           controlX = 128 + (positionX * 40);
           controlY = 128 + (positionY * 68);
         }
       }
     }
 
+  }
+  /********* Nunchuk *********/
+  else
+  {
+    isL = false; isUP = false; isDOWN = false; isLEFT = false; isRIGHT = false;
+    bool isZ = nchuk.buttonZ();
+    bool isC = nchuk.buttonC();
+
+    if (isC && isZ)
+      LLight = 80;
+    if (!isC && isZ) {
+      LLight = 140;
+      isL = true;
+    }
+
+    /*********C Stick*********/
+    if (currentSOCD == TwoIPNoReactivate) {
+      cstickX = fTwoIPNoReactivate(isCLEFT, isCRIGHT, wasCLEFT, wasCRIGHT, lockCLEFT, lockCRIGHT);
+      cstickY = fTwoIPNoReactivate(isCDOWN, isCUP, wasCDOWN, wasCUP, lockCDOWN, lockCUP);
+    }
+
+    if (currentSOCD == TwoIP){
+      cstickX = fTwoIP(isCLEFT, isCRIGHT, wasCLEFT, wasCRIGHT);
+      cstickY = fTwoIP(isCDOWN, isCUP, wasCDOWN, wasCUP);
+    }
+
+    if (currentSOCD == Neutral) {
+      cstickX = fNeutral(isCLEFT, isCRIGHT);
+      cstickY = fNeutral(isCDOWN, isCUP);
+    }
+
+    controlX = nchuk.joyX();
+    controlY = nchuk.joyY();
+  }
+
 /********* DPAD *********/
-//Comment out line 588, and uncomment 589 if you want to use a dpad switch/button on the EXTRA2 terminal.
-  if (isMOD1 && isMOD2) {
-  //if (isEXTRA2) {
+  if (isMODX && isMODY) {
     cstickX = 128;
     cstickY = 128;
     if (isCUP) isDPADUP = true;

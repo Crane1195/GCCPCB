@@ -1,19 +1,19 @@
 /*
-  GCCPCB v1.2 code by Crane.
+  GCCPCB2 v1.203 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
-    dmadison's Nintendo Extension Ctrl library
     MHeironimus' Arduino Joystick Library.
-  This is code designed with my GCCPCB in mind. It is the only device I can confirm will work with this code. If
-  you use it on any other device, do so at your own risk. Though this code should work on 32u4 based Arduino's like
-  the Leonardo, Micro, and Pro Micro with a Nunchuk port wired to the SDA and SCL pins.
-  A version of this code is available without native USB joystick support and nunchuk support for DIY controllers
-  using other Arduinos here https://github.com/Crane1195/DIYB0XX/tree/master/code
 
-  Read the README file for whichever of these you are using for more information.
+
+  This is code designed with my GCCPCB 2.0 in mind. It is the only device I can confirm will work with this code. If
+  you use it on any other device, do so at your own risk.
+
+  If you are using a GCCPCB 1.0, you picked the wrong release file.
+
+  A version of this code is available for DIYB0XXes
+  using other Arduinos here https://github.com/Crane1195/DIYB0XX/tree/master/code
 */
 #include "Nintendo.h"
-#include <NintendoExtensionCtrl.h>
 #include <Joystick.h>
 
 bool isLightShieldButtons = true;
@@ -30,7 +30,7 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_GAMEPAD,
   false, true,          // No rudder, throttle
   false, false, false);  // No accelerator, no brake, no steering
 
-CGamecubeConsole GamecubeConsole(A5);
+CGamecubeConsole GamecubeConsole(17);
 Gamecube_Data_t d = defaultGamecubeData;
 
 enum game
@@ -77,47 +77,48 @@ game currentGame = Melee;
 device currentDevice = GC;
 SOCD currentSOCD = TwoIPNoReactivate;
 
-Nunchuk nchuk;
+int L = 2;
+int LEFT = 10;        // Left
+int DOWN = 13;        // Down
+int RIGHT = 5;        // Right
+int MODX = 7;         // Up
+int MODY = 3;
 
-const int L = 16;
-const int LEFT = 1;
-const int DOWN = 0;
-const int RIGHT = 4;
-const int MOD1 = 5;
-const int MOD2 = 6;
+int SELECT = 9;       // Select/Share/Back
+int START = 6;        // Start/Options
+int HOME = 8;         // Home/PS/XB
 
-const int START = 7;
-const int B = A2;
-const int X = A1;
-const int Z = A0;
-const int UP = 13;
-const int R = A4;
-const int Y = A3;
+int CDOWN = A0;
+int CLEFT = A1;
+int A = A2;
+int CUP = A3;
+int CRIGHT = A4;
 
-const int CDOWN = 12;
-const int A = 15;
-const int CRIGHT = 14;
-const int CLEFT = 9;
-const int CUP = 8;
+int UP = 15;          // 4K/L2/LT
+int Z = 16;           // 3K/R2/RT
+int X = 14;           // 2K/O/B
+int B = A5;           // 1K/X/A
 
-const int EXTRA1 = 11;
-const int EXTRA2 = 10;
+int MIDSHIELD = 0;    // 4P/L1/LB
+int LIGHTSHIELD = 1;  // 3P/R1/RB
+int Y = 4;            // 2P/△/Y
+int R = 12;           // 1P/□/X
+
+int SWITCH = 11;
 
 const uint8_t minValue = 28;
 const uint8_t maxValue = 228;
 
-void setup()
-{
-  nchuk.begin();
-  nchuk.connect();
-
+void setup() {
   pinMode(L, INPUT_PULLUP);
   pinMode(LEFT, INPUT_PULLUP);
   pinMode(DOWN, INPUT_PULLUP);
   pinMode(RIGHT, INPUT_PULLUP);
-  pinMode(MOD1, INPUT_PULLUP);
-  pinMode(MOD2, INPUT_PULLUP);
+  pinMode(MODX, INPUT_PULLUP);
+  pinMode(MODY, INPUT_PULLUP);
   pinMode(START, INPUT_PULLUP);
+  pinMode(SELECT, INPUT_PULLUP);
+  pinMode(HOME, INPUT_PULLUP);
   pinMode(B, INPUT_PULLUP);
   pinMode(X, INPUT_PULLUP);
   pinMode(Z, INPUT_PULLUP);
@@ -130,9 +131,15 @@ void setup()
   pinMode(CLEFT, INPUT_PULLUP);
   pinMode(CUP, INPUT_PULLUP);
   if (isLightShieldButtons) {
-    pinMode(EXTRA1, INPUT_PULLUP);
-    pinMode(EXTRA2, INPUT_PULLUP);
+    pinMode(LIGHTSHIELD, INPUT_PULLUP);
+    pinMode(MIDSHIELD, INPUT_PULLUP);
   }
+  pinMode(SWITCH, OUTPUT);
+
+  if ((digitalRead(MODX) == LOW) && (digitalRead(A) == LOW))
+    digitalWrite(SWITCH, HIGH);
+  else
+    digitalWrite(SWITCH, LOW);
 
   if (digitalRead(CDOWN) == LOW) {
     currentDevice = PC;
@@ -161,26 +168,30 @@ void setup()
 
 void loop()
 {
-  bool isL      = (digitalRead(L) == LOW);
-  bool isLEFT   = (digitalRead(LEFT) == LOW);
-  bool isDOWN   = (digitalRead(DOWN) == LOW);
-  bool isRIGHT  = (digitalRead(RIGHT) == LOW);
-  bool isMOD1   = (digitalRead(MOD1) == LOW);
-  bool isMOD2   = (digitalRead(MOD2) == LOW);
-  bool isSTART  = (digitalRead(START) == LOW);
-  bool isB      = (digitalRead(B) == LOW);
-  bool isX      = (digitalRead(X) == LOW);
-  bool isZ      = (digitalRead(Z) == LOW);
-  bool isUP     = (digitalRead(UP) == LOW);
-  bool isR      = (digitalRead(R) == LOW);
-  bool isY      = (digitalRead(Y) == LOW);
-  bool isCDOWN  = (digitalRead(CDOWN) == LOW);
-  bool isA      = (digitalRead(A) == LOW);
-  bool isCRIGHT = (digitalRead(CRIGHT) == LOW);
-  bool isCLEFT  = (digitalRead(CLEFT) == LOW);
-  bool isCUP    = (digitalRead(CUP) == LOW);
-  bool isEXTRA1 = (digitalRead(EXTRA1) == LOW);
-  bool isEXTRA2 = (digitalRead(EXTRA2) == LOW);
+  bool isL           = (digitalRead(L) == LOW);
+  bool isLEFT        = (digitalRead(LEFT) == LOW);
+  bool isDOWN        = (digitalRead(DOWN) == LOW);
+  bool isRIGHT       = (digitalRead(RIGHT) == LOW);
+  bool isMODX        = (digitalRead(MODX) == LOW);
+  bool isMODY        = (digitalRead(MODY) == LOW);
+  bool isSTART       = (digitalRead(START) == LOW);
+  bool isSELECT      = (digitalRead(SELECT) == LOW);
+  bool isHOME        = (digitalRead(HOME) == LOW);
+  bool isB           = (digitalRead(B) == LOW);
+  bool isX           = (digitalRead(X) == LOW);
+  bool isZ           = (digitalRead(Z) == LOW);
+  bool isUP          = (digitalRead(UP) == LOW);
+  bool isR           = (digitalRead(R) == LOW);
+  bool isY           = (digitalRead(Y) == LOW);
+  bool isLIGHTSHIELD = (digitalRead(LIGHTSHIELD) == LOW);
+  bool isMIDSHIELD   = (digitalRead(MIDSHIELD) == LOW);
+  bool isCDOWN       = (digitalRead(CDOWN) == LOW);
+  bool isA           = (digitalRead(A) == LOW);
+  bool isCRIGHT      = (digitalRead(CRIGHT) == LOW);
+  bool isCLEFT       = (digitalRead(CLEFT) == LOW);
+  bool isCUP         = (digitalRead(CUP) == LOW);
+
+
 
   bool isDPADUP = false;
   bool isDPADDOWN = false;
@@ -203,8 +214,6 @@ void loop()
   bool VERTICAL = false;
   bool DIAGONAL = false;
 
-  /********* No nunchuk *********/
-  if (!nchuk.update()) {
     /********* SOCD *********/
     if (currentSOCD == TwoIPNoReactivate) {
       controlX = fTwoIPNoReactivate(isLEFT, isRIGHT, wasLEFT, wasRIGHT, lockLEFT, lockRIGHT);
@@ -249,7 +258,7 @@ void loop()
     }
     /********* Modifiers *********/
 
-    if (isMOD1) {
+    if (isMODX) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 53);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 40);
@@ -355,7 +364,7 @@ void loop()
       }
     }
 
-    if (isMOD2) {
+    if (isMODY) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 27);
         if (currentGame == Ultimate) controlX = 128 + (positionX * 27);
@@ -457,16 +466,22 @@ void loop()
 
 
     if (isLightShieldButtons && (currentGame == Melee)) {
-      if (isEXTRA1 || isEXTRA2) {
-        if (isEXTRA1) RLight = 49;
-        if (isEXTRA2) RLight = 94;
+      if (isLIGHTSHIELD || isMIDSHIELD) {
+        if (currentDevice == PC) {
+          if (isLIGHTSHIELD) RLight = 50;
+          if (isMIDSHIELD) RLight = 95;
+        }
+        else {
+          if (isLIGHTSHIELD) RLight = 80;
+          if (isMIDSHIELD) RLight = 125;
+        }
 
         if (HORIZONTAL && (positionY == -1)) {
           controlX = 128 + (positionX * 57);
           controlY = 128 - 55;
         }
 
-        if (isMOD1) {
+        if (isMODX) {
           if (HORIZONTAL) {
             if (currentGame == Ultimate)
               controlX = 128 + (positionX * 51);
@@ -511,20 +526,20 @@ void loop()
         if (currentGame == Melee) controlY = 128 - 55;
         else {controlX = 128 + (positionX * 100); controlY = minValue;}
       }
-      if ((currentGame == Melee) && (isMOD1 || isMOD2)) {
+      if ((currentGame == Melee) && (isMODX || isMODY)) {
         if (!isLightShieldButtons) {
-          if (!(isMOD1 && isMOD2)) {
+          if (!(isMODX && isMODY)) {
             isL = false;
             LLight = 80;
           }
         }
 
         if (DIAGONAL) {
-          if (isMOD1) {
+          if (isMODX) {
             controlX = 128 + (positionX * 51);
             controlY = 128 + (positionY * 30);
           }
-          if (isMOD2) {
+          if (isMODY) {
             controlX = 128 + (positionX * 40);
             controlY = 128 + (positionY * 68);
           }
@@ -552,7 +567,7 @@ void loop()
       }
       if (DIAGONAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 43);
-        if (isMOD1) {
+        if (isMODX) {
           if (currentGame == Melee){
             controlX = 128 + (positionX * 51);
             controlY = 128 + (positionY * 30);
@@ -562,52 +577,17 @@ void loop()
             controlY = 128 + (positionY * 40);
           }
         }
-        if (isMOD2) {
+        if (isMODY) {
           controlX = 128 + (positionX * 40);
           controlY = 128 + (positionY * 68);
         }
       }
     }
 
-  }
-  /********* Nunchuk *********/
-  else
-  {
-    isL = false; isUP = false; isDOWN = false; isLEFT = false; isRIGHT = false;
-    bool isZ = nchuk.buttonZ();
-    bool isC = nchuk.buttonC();
-
-    if (isC && isZ)
-      LLight = 80;
-    if (!isC && isZ) {
-      LLight = 140;
-      isL = true;
-    }
-
-    /*********C Stick*********/
-    if (currentSOCD == TwoIPNoReactivate) {
-      cstickX = fTwoIPNoReactivate(isCLEFT, isCRIGHT, wasCLEFT, wasCRIGHT, lockCLEFT, lockCRIGHT);
-      cstickY = fTwoIPNoReactivate(isCDOWN, isCUP, wasCDOWN, wasCUP, lockCDOWN, lockCUP);
-    }
-
-    if (currentSOCD == TwoIP){
-      cstickX = fTwoIP(isCLEFT, isCRIGHT, wasCLEFT, wasCRIGHT);
-      cstickY = fTwoIP(isCDOWN, isCUP, wasCDOWN, wasCUP);
-    }
-
-    if (currentSOCD == Neutral) {
-      cstickX = fNeutral(isCLEFT, isCRIGHT);
-      cstickY = fNeutral(isCDOWN, isCUP);
-    }
-
-    controlX = nchuk.joyX();
-    controlY = nchuk.joyY();
-  }
-
 /********* DPAD *********/
-//Comment out line 588, and uncomment 589 if you want to use a dpad switch/button on the EXTRA2 terminal.
-  if (isMOD1 && isMOD2) {
-  //if (isEXTRA2) {
+//Comment out line 588, and uncomment 589 if you want to use a dpad switch/button on the MIDSHIELD terminal.
+  if (isMODX && isMODY) {
+  //if (isMIDSHIELD) {
     cstickX = 128;
     cstickY = 128;
     if (isCUP) isDPADUP = true;
@@ -630,8 +610,10 @@ void loop()
     Joystick.setButton(9, isDPADUP);
     Joystick.setButton(10, isDPADRIGHT);
     Joystick.setButton(11, isDPADDOWN);
-    Joystick.setButton(12, isEXTRA1);
-    Joystick.setButton(13, isEXTRA2);
+    Joystick.setButton(12, isLIGHTSHIELD);
+    Joystick.setButton(13, isMIDSHIELD);
+    Joystick.setButton(14, isSELECT);
+    Joystick.setButton(15, isHOME);
 
     Joystick.setXAxis(controlX);
     Joystick.setYAxis(controlY);
