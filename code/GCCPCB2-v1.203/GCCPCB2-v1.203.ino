@@ -294,7 +294,7 @@ void loop()
         }
         if (currentGame == Ultimate) {
           controlX = 128 + (positionX * 53); // 53 is the highest coordinate you can go without running into dash attack problems when angling ftilts.
-          controlY = 128 + (positionY * 40); // 40 lets palutena up b go farther compared to 26. Could still be tweeked for a more optimal angle.
+          controlY = 128 + (positionY * 26);
           if (isA) {  // This line of code is requried to enable diagonal ftilts.
             controlX = 128 + (positionX * 36);
             controlY = 128 + (positionY * 26); 
@@ -370,7 +370,7 @@ void loop()
     if (isMODY) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 27);
-        if (currentGame == Ultimate) controlX = 128 + (positionX * 47); // 41 lets players turn around neutral b. Also enables pikachu/pichu double up b.  Change to 46 to nerf pikachu/pichu. 47 to change from neutral b to side b.
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 47);
         if (currentGame == PM) controlX = 128 + (positionX * 28);
       }
       if (VERTICAL) {
@@ -383,6 +383,7 @@ void loop()
       }
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 80);
+       if (currentGame == Ultimate) controlX = 128 + (positionX * 41); // 41 lets players turn around neutral b, and enables pikachu/pichu double up b. Change to 46 to nerf pikachu/pichu. Delete this line nerf both.
         if (currentGame == PM) controlX = 128 + (positionX * 59);
       }
 
@@ -392,7 +393,7 @@ void loop()
           controlY = 128 + (positionY * 59);
         }
         if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 47); // 47 is better for palu teleports. Could still be tweeked for a more optimal angle.
+          controlX = 128 + (positionX * 38);
           controlY = 128 + (positionY * 49);
           
         if (isA) {  // This line of code is required to enable pivot dtilts/uptilts.
