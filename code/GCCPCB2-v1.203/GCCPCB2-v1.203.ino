@@ -275,7 +275,7 @@ void loop()
         if (currentGame == PM) controlY = 128 + (positionY * 60);
       }
 
-      if (isA) {  // This line of code is required to access the fastest walking speed while being able to ftilt instead of dash attacking.
+      if (isA) {  // This line of code is required to access the fastest walking speed while being able to ftilt.
         if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
       }
 
@@ -375,10 +375,10 @@ void loop()
       }
       if (VERTICAL) {
         if (currentGame == Melee) controlY = 128 + (positionY * 59);
-        if (currentGame == Ultimate) controlY = 128 + (positionY * 49); // 49 prevents fastfalling/fall through platforms/tap jump. Anything higher will make dtilts on platforms awkward.
+        if (currentGame == Ultimate) controlY = 128 + (positionY * 49); // 49 prevents fastfalling/fall through platforms/tap jump. Anything higher will make dtilt on platforms awkward.
         if (currentGame == PM) controlY = 128 + (positionY * 34);
       }
-      if (isA) {  // This line of code is required to ftilt instead of dash attacking if the horizontal coordinate is at 47 or higher.
+      if (isA) {  // This line of code is required make ftilt work.
         if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
       }
       if (isB) {
