@@ -96,13 +96,13 @@ const int R = A4;
 const int Y = A3;
 
 const int CDOWN = 12;
-const int A = 10;
+const int A = 15;
 const int CRIGHT = 14;
-const int CLEFT = 11;
+const int CLEFT = 9;
 const int CUP = 8;
 
-const int EXTRA1 = 9;
-const int EXTRA2 = 15;
+const int EXTRA1 = 11;
+const int EXTRA2 = 10;
 
 const uint8_t minValue = 28;
 const uint8_t maxValue = 228;
