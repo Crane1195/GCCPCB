@@ -253,7 +253,7 @@ void loop()
     if (isMODX) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 53);
-        if (currentGame == Ultimate) controlX = 128 + (positionX * 53); // 53 is fastest walk speed.
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 53);
         if (currentGame == PM) controlX = 128 + (positionX * 70);
       }
       if (VERTICAL) {
@@ -267,7 +267,7 @@ void loop()
         if (currentGame == PM) controlY = 128 + (positionY * 60);
       }
 
-      if (isA) {  // This line of code is required to access the fastest walking speed while being able to ftilt instead of dash attacking.
+      if (isA) {
         if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
       }
 
@@ -285,9 +285,9 @@ void loop()
           controlY = 128 + (positionY * 23);
         }
         if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 53); // 53 is the highest coordinate you can go without running into dash attack problems when angling ftilts.
+          controlX = 128 + (positionX * 53);
           controlY = 128 + (positionY * 26);
-          if (isA) {  // This line of code is requried to enable diagonal ftilts.
+          if (isA) {
             controlX = 128 + (positionX * 36);
             controlY = 128 + (positionY * 26); 
          }
@@ -367,7 +367,7 @@ void loop()
       }
       if (VERTICAL) {
         if (currentGame == Melee) controlY = 128 + (positionY * 59);
-        if (currentGame == Ultimate) controlY = 128 + (positionY * 49); // 49 prevents fastfalling/fall through platforms/tap jump. Anything higher will make dtilt on platforms awkward.
+        if (currentGame == Ultimate) controlY = 128 + (positionY * 49);
         if (currentGame == PM) controlY = 128 + (positionY * 34);
       }
       if (isA) {  // // This line of code is required make ftilt work.
@@ -375,7 +375,7 @@ void loop()
       }
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 80);
-        if (currentGame == Ultimate) controlX = 128 + (positionX * 41); // 41 lets players turn around neutral b, and enables pikachu/pichu double up b. Change to 46 to nerf pikachu/pichu. Delete this line nerf both.
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 41);
         if (currentGame == PM) controlX = 128 + (positionX * 59);
       }
 
@@ -388,7 +388,7 @@ void loop()
           controlX = 128 + (positionX * 38);
           controlY = 128 + (positionY * 49);
           
-         if (isA) {  // This line of code is required to enable pivot dtilts/uptilts.
+         if (isA) {
            controlX = 128 + (positionX * 36);
            controlY = 128 + (positionY * 41);
          }
