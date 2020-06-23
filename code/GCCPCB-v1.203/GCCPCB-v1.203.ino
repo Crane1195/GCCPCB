@@ -267,8 +267,7 @@ void loop()
         if (currentGame == PM) controlY = 128 + (positionY * 60);
       }
 
-      if (isA) {  // This line of code is required to access the fastest walking speed while being able to 
-	      .
+      if (isA) {  // This line of code is required to access the fastest walking speed while being able to ftilt instead of dash attacking.
         if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
       }
 
