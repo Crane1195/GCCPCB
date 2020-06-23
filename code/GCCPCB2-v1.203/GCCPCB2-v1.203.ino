@@ -261,7 +261,7 @@ void loop()
     if (isMODX) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 53);
-        if (currentGame == Ultimate) controlX = 128 + (positionX * 40);
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 53); // 53 is fastest walk speed.
         if (currentGame == PM) controlX = 128 + (positionX * 70);
       }
       if (VERTICAL) {
@@ -275,12 +275,12 @@ void loop()
         if (currentGame == PM) controlY = 128 + (positionY * 60);
       }
 
+      if (isA) {  // This line of code is required to access the fastest walking speed while being able to ftilt instead of dash attacking.
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
+      }
+
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 53);
-        if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 47);
-          controlY = 128 + (positionY * 41);
-        }
       }
       if (positionCX != 0){
         cstickX = 128 + (positionCX * 65);
@@ -293,9 +293,12 @@ void loop()
           controlY = 128 + (positionY * 23);
         }
         if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 40);
-          controlY = 128 + (positionY * 26);
-          if (isB) controlX = 128 + (positionX * 53);
+          controlX = 128 + (positionX * 53); // 53 is the highest coordinate you can go without running into dash attack problems when angling ftilts.
+          controlY = 128 + (positionY * 40); // 40 lets palutena up b go farther compared to 26. Could still be tweeked for a more optimal angle.
+          if (isA) {  // This line of code is requried to enable diagonal ftilts.
+            controlX = 128 + (positionX * 36);
+            controlY = 128 + (positionY * 26); 
+         }
         }
         if (currentGame == PM) {
           controlX = 128 + (positionX * 70);
@@ -367,21 +370,19 @@ void loop()
     if (isMODY) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 27);
-        if (currentGame == Ultimate) controlX = 128 + (positionX * 27);
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 47); // 41 lets players turn around neutral b. Also enables pikachu/pichu double up b.  Change to 46 to nerf pikachu/pichu. 47 to change from neutral b to side b.
         if (currentGame == PM) controlX = 128 + (positionX * 28);
       }
       if (VERTICAL) {
         if (currentGame == Melee) controlY = 128 + (positionY * 59);
-        if (currentGame == Ultimate) controlY = 128 + (positionY * 51);
+        if (currentGame == Ultimate) controlY = 128 + (positionY * 49); // 49 prevents fastfalling/fall through platforms/tap jump. Anything higher will make dtilts on platforms awkward.
         if (currentGame == PM) controlY = 128 + (positionY * 34);
       }
-
+      if (isA) {  // This line of code is required to ftilt instead of dash attacking if the horizontal coordinate is at 47 or higher.
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
+      }
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 80);
-        if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 41);
-          controlY = 128 + (positionY * 61);
-        }
         if (currentGame == PM) controlX = 128 + (positionX * 59);
       }
 
@@ -391,8 +392,13 @@ void loop()
           controlY = 128 + (positionY * 59);
         }
         if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 38);
+          controlX = 128 + (positionX * 47); // 47 is better for palu teleports. Could still be tweeked for a more optimal angle.
           controlY = 128 + (positionY * 49);
+          
+        if (isA) {  // This line of code is required to enable pivot dtilts/uptilts.
+          controlX = 128 + (positionX * 36);
+          controlY = 128 + (positionY * 41);
+         }
         }
         if (currentGame == PM) {
           controlX = 128 + (positionX * 28);
