@@ -14,8 +14,6 @@ https://github.com/dmadison/NintendoExtensionCtrl
 
 If this is the first time you have used these libraries, press Clone or download, and press Download ZIP on these repos.
 
-![image](https://i.imgur.com/qxkgcJC.png)
-
 Download GCCPCB-vX.Y.ino from the latest release here https://github.com/Crane1195/GCCPCB/releases. Make a folder with the same name as the file (GCCPCB-vX.Y) and put the .ino file in this folder. Place the newly created Joystick.zip file, as well as the Nintendo-master.zip file in this folder as well.
 
 ![image](https://i.imgur.com/W2LNSte.png)
