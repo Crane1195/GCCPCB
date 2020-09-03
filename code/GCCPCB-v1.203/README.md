@@ -12,11 +12,9 @@ and dmadison's Nintendo Extension Controller Library found here :
 
 https://github.com/dmadison/NintendoExtensionCtrl
 
-If this is the first time you have used these libraries, press Clone or download, and press Download ZIP on these repos. The Nintendo library and the Extension controller library are in the form they need to be in, but the joystick library is not.
+If this is the first time you have used these libraries, press Clone or download, and press Download ZIP on these repos.
 
 ![image](https://i.imgur.com/qxkgcJC.png)
-
-Extract the Joystick folder out of the ArduinoJoystickLibrary-master ZIP file, and then ZIP the Joystick folder. You should have a Joystick.zip file, that contains the Joystick folder, that contains a src folder, an examples folder, and a file named library.properties.
 
 Download GCCPCB-vX.Y.ino from the latest release here https://github.com/Crane1195/GCCPCB/releases. Make a folder with the same name as the file (GCCPCB-vX.Y) and put the .ino file in this folder. Place the newly created Joystick.zip file, as well as the Nintendo-master.zip file in this folder as well.
 
