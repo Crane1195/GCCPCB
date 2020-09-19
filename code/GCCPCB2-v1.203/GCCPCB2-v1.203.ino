@@ -378,7 +378,7 @@ void loop()
         if (currentGame == Ultimate) controlY = 128 + (positionY * 49);
         if (currentGame == PM) controlY = 128 + (positionY * 34);
       }
-      if (isA)
+      if (isA) {
         if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
       }
       if (isB) {
