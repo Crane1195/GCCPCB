@@ -38,13 +38,14 @@ enum game
 {
   Melee,
   PM,
-  Ultimate
+  Ultimate,
+  Brook,
 };
 
 enum device
 {
 	GC,
-	PC
+	PC,
 };
 
 enum SOCD
@@ -96,13 +97,13 @@ const int R = A4;
 const int Y = A3;
 
 const int CDOWN = 12;
-const int A = 15;
+const int A = 10; //  Midshield
 const int CRIGHT = 14;
-const int CLEFT = 9;
+const int CLEFT = 11; // Lightshield
 const int CUP = 8;
 
-const int EXTRA1 = 11;
-const int EXTRA2 = 10;
+const int EXTRA1 = 9; // A
+const int EXTRA2 = 15; // C-Stick Left
 
 const uint8_t minValue = 28;
 const uint8_t maxValue = 228;
@@ -157,6 +158,13 @@ void setup()
   {
     currentGame = PM;
     currentSOCD = TwoIPNoReactivate;
+  }
+  if (digitalRead(Z) == LOW)
+  {
+    currentGame = Brook;
+    pinMode(MODX, OUTPUT);
+    pinMode(LEFT, OUTPUT);
+    pinMode(RIGHT, OUTPUT);
   }
 }
 
@@ -248,6 +256,24 @@ void loop()
       if (cstickY == minValue) positionCY = -1;
       else positionCY = 1;
     }
+    /************** Brook **********/
+    if (currentGame == Brook) {
+      if (isCUP){
+        digitalWrite(MODX, LOW);
+      } else {
+        digitalWrite(MODX, HIGH);
+       }
+      if (isCLEFT){
+        digitalWrite(LEFT, LOW);
+      } else {
+        digitalWrite(LEFT, HIGH);
+       }
+      if (isCRIGHT){
+        digitalWrite(RIGHT, LOW);
+      } else {
+        digitalWrite(RIGHT, HIGH);
+       }
+      }
     /********* Modifiers *********/
 
     if (isMODX) {
