@@ -2,6 +2,8 @@
 
 ## August 2018
 
+![image](https://i.imgur.com/1pRjkWZ.jpg?1)
+
 ![image](https://i.imgur.com/Xd2UNEx.jpg)
 
 I built this first controller using an Arduino, a logic level shifter, and a permanently attached cable. Here is a link to a build-log for this controller:
