@@ -38,13 +38,14 @@ enum game
 {
   Melee,
   PM,
-  Ultimate
+  Ultimate,
+  Brook,
 };
 
 enum device
 {
 	GC,
-	PC
+	PC,
 };
 
 enum SOCD
@@ -96,13 +97,13 @@ const int R = A4;
 const int Y = A3;
 
 const int CDOWN = 12;
-const int A = 15;
+const int A = 10; //  Midshield
 const int CRIGHT = 14;
-const int CLEFT = 9;
+const int CLEFT = 11; // Lightshield
 const int CUP = 8;
 
-const int EXTRA1 = 11;
-const int EXTRA2 = 10;
+const int EXTRA1 = 9; // A
+const int EXTRA2 = 15; // C-Stick Left
 
 const uint8_t minValue = 28;
 const uint8_t maxValue = 228;
@@ -157,6 +158,13 @@ void setup()
   {
     currentGame = PM;
     currentSOCD = TwoIPNoReactivate;
+  }
+  if (digitalRead(Z) == LOW)
+  {
+    currentGame = Brook;
+    pinMode(MODX, OUTPUT);
+    pinMode(LEFT, OUTPUT);
+    pinMode(RIGHT, OUTPUT);
   }
 }
 
@@ -248,12 +256,30 @@ void loop()
       if (cstickY == minValue) positionCY = -1;
       else positionCY = 1;
     }
+    /************** Brook **********/
+    if (currentGame == Brook) {
+      if (isCUP){
+        digitalWrite(MODX, LOW);
+      } else {
+        digitalWrite(MODX, HIGH);
+       }
+      if (isCLEFT){
+        digitalWrite(LEFT, LOW);
+      } else {
+        digitalWrite(LEFT, HIGH);
+       }
+      if (isCRIGHT){
+        digitalWrite(RIGHT, LOW);
+      } else {
+        digitalWrite(RIGHT, HIGH);
+       }
+      }
     /********* Modifiers *********/
 
     if (isMODX) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 53);
-        if (currentGame == Ultimate) controlX = 128 + (positionX * 40);
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 53);
         if (currentGame == PM) controlX = 128 + (positionX * 70);
       }
       if (VERTICAL) {
@@ -267,12 +293,12 @@ void loop()
         if (currentGame == PM) controlY = 128 + (positionY * 60);
       }
 
+      if (isA) {
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
+      }
+
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 53);
-        if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 47);
-          controlY = 128 + (positionY * 41);
-        }
       }
       if (positionCX != 0){
         cstickX = 128 + (positionCX * 65);
@@ -285,9 +311,12 @@ void loop()
           controlY = 128 + (positionY * 23);
         }
         if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 40);
+          controlX = 128 + (positionX * 53);
           controlY = 128 + (positionY * 26);
-          if (isB) controlX = 128 + (positionX * 53);
+          if (isA) {
+            controlX = 128 + (positionX * 36);
+            controlY = 128 + (positionY * 26); 
+         }
         }
         if (currentGame == PM) {
           controlX = 128 + (positionX * 70);
@@ -359,21 +388,20 @@ void loop()
     if (isMODY) {
       if (HORIZONTAL) {
         if (currentGame == Melee) controlX = 128 + (positionX * 27);
-        if (currentGame == Ultimate) controlX = 128 + (positionX * 27);
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 47);
         if (currentGame == PM) controlX = 128 + (positionX * 28);
       }
       if (VERTICAL) {
         if (currentGame == Melee) controlY = 128 + (positionY * 59);
-        if (currentGame == Ultimate) controlY = 128 + (positionY * 51);
+        if (currentGame == Ultimate) controlY = 128 + (positionY * 49);
         if (currentGame == PM) controlY = 128 + (positionY * 34);
       }
-
+      if (isA) {
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 36);
+      }
       if (isB) {
         if (currentGame == Melee) controlX = 128 + (positionX * 80);
-        if (currentGame == Ultimate) {
-          controlX = 128 + (positionX * 41);
-          controlY = 128 + (positionY * 61);
-        }
+        if (currentGame == Ultimate) controlX = 128 + (positionX * 41);
         if (currentGame == PM) controlX = 128 + (positionX * 59);
       }
 
@@ -385,6 +413,11 @@ void loop()
         if (currentGame == Ultimate) {
           controlX = 128 + (positionX * 38);
           controlY = 128 + (positionY * 49);
+          
+         if (isA) {
+           controlX = 128 + (positionX * 36);
+           controlY = 128 + (positionY * 41);
+         }
         }
         if (currentGame == PM) {
           controlX = 128 + (positionX * 28);
