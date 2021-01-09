@@ -33,11 +33,12 @@ The GCCPCB 1.0 supports the Nunchuk over the Nintendo extension controller port.
 
 ## Game profiles
 
-The GCCPCB supports Melee, Ultimate, and PM. In addition to holding C-Down (or not), two of these modes require a button input on plug in.
+The GCCPCB supports Melee, Ultimate, PM, and RoA. In addition to holding C-Down (or not), two of these modes require a button input on plug in.
 
 *  To launch in Melee mode, just plug in normally.
 *  To launch in Smash4/Ultimate mode, hold B while plugging in.
 *  To launch in Project M mode, hold X while plugging in.
+*  To launch in RoA mode, hold Z while plugging in.
 
 For example, if you are playing PM on Dolphin with default settings, you would hold C-Down and X while plugging in. Melee on console, hold nothing. Ultimate on console, hold B. Melee on Dolphin, hold C-Down. Et cetera.
 
