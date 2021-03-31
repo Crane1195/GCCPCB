@@ -163,4 +163,4 @@ Once again, this works like it does in Melee mode.
 ## Questions, Corrections, Contact, Conclusion
 This page will stay up to date with the latest B0XX PM patch, and will eventually probably be replaced by the B0XX PM Instruction Manual.
 
-Have any questions about my findings or graphics, or spot any mistakes? Feel free to PM me on Discord @Crane#1195, or ask me in my [GCCPCB discord](discord.gg/P2BxMVY), or in the [B0XX discord](discord.gg/6wcEaDU).
+Have any questions about my findings or graphics, or spot any mistakes? Feel free to PM me on Discord @Crane#1195, or ask me in my [Discord Server](https://craneslab.xyz/discord).
