@@ -1,3 +1,9 @@
+# Deprecated
+
+This firmware has been succeeded by [CL-FW](https://github.com/Crane1195/CL-FW). Consult the CL-FW README for more information and a new installation guide.
+
+---
+
 # Which to use?
 * If you are using a GCCPCB 1.0, download the latest GCCPCB-vX.Y.ino release here https://github.com/Crane1195/GCCPCB/releases
 
